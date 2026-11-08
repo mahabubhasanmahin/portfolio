@@ -919,6 +919,46 @@ const rows = [
   "Practice focus: line coding, signal plots, and communication basics.",
   "চর্চার বিষয়: লাইন কোডিং, সিগন্যাল প্লট ও যোগাযোগের প্রাথমিক ধারণা।",
   "練習した分野：ライン符号化、信号のグラフ、通信の基礎。"
+ ],
+ [
+  "View CV",
+  "সিভি দেখুন",
+  "履歴書を見る"
+ ],
+ [
+  "CV preview",
+  "সিভির প্রিভিউ",
+  "履歴書のプレビュー"
+ ],
+ [
+  "Close CV preview",
+  "সিভির প্রিভিউ বন্ধ করুন",
+  "履歴書のプレビューを閉じる"
+ ],
+ [
+  "CV document",
+  "সিভি ডকুমেন্ট",
+  "履歴書ファイル"
+ ],
+ [
+  "Open PDF ↗",
+  "পিডিএফ খুলুন ↗",
+  "PDFを開く ↗"
+ ],
+ [
+  "If the preview does not appear, open the PDF.",
+  "প্রিভিউ না এলে পিডিএফ খুলুন।",
+  "プレビューが表示されない場合はPDFを開いてください。"
+ ],
+ [
+  "Looking for an intern? Let’s talk ↗",
+  "ইন্টার্ন খুঁজছেন? যোগাযোগ করুন ↗",
+  "インターンをお探しですか？ご連絡ください ↗"
+ ],
+ [
+  "I study computer science, practice problem solving with C++, and learn backend development through projects. I am looking for a software development internship where I can learn and help a team.",
+  "আমি কম্পিউটার বিজ্ঞান পড়ছি, C++ দিয়ে সমস্যা সমাধান চর্চা করি এবং প্রজেক্টের মাধ্যমে ব্যাকএন্ড ডেভেলপমেন্ট শিখি। এমন সফটওয়্যার ডেভেলপমেন্ট ইন্টার্নশিপ খুঁজছি, যেখানে শিখতে ও দলকে সাহায্য করতে পারব।",
+  "情報工学を学び、C++で問題解決を練習し、プロジェクトを通してバックエンド開発を学んでいます。学びながらチームに貢献できるソフトウェア開発のインターンシップを探しています。"
  ]
 ];
 const dictionary=new Map(rows.map(([en,bn,ja])=>[en,{en,bn,ja}]));
@@ -929,7 +969,7 @@ export function translatePage(root=document.body){
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:node=>node.parentElement.closest('script,style,code,pre,select')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
  for(const node of nodes){if(!originals.has(node))originals.set(node,node.textContent);const source=originals.get(node);const value=source.trim();if(dictionary.has(value))node.textContent=source.replace(value,translate(value));}
- root.querySelectorAll('[aria-label],[title],[alt]').forEach(node=>{if(!originalAttrs.has(node))originalAttrs.set(node,{});const saved=originalAttrs.get(node);for(const attr of ['aria-label','title','alt']){if(!node.hasAttribute(attr)||(node.id==='theme-toggle'&&attr==='aria-label'))continue;if(!saved[attr])saved[attr]=node.getAttribute(attr);node.setAttribute(attr,translate(saved[attr]));}});
+ root.querySelectorAll('[aria-label],[title],[alt]').forEach(node=>{if(!originalAttrs.has(node))originalAttrs.set(node,{});const saved=originalAttrs.get(node);for(const attr of ['aria-label','title','alt']){if(!node.hasAttribute(attr)||node.hasAttribute('data-i18n-dynamic')||(node.id==='theme-toggle'&&attr==='aria-label'))continue;const explicit=node.getAttribute('data-i18n-'+attr);if(explicit){node.setAttribute(attr,translate(explicit));continue;}if(!saved[attr])saved[attr]=node.getAttribute(attr);node.setAttribute(attr,translate(saved[attr]));}});
 }
 export function initLanguage(){
  const select=document.querySelector('#language-select');try{const stored=localStorage.getItem('mahin-language');if(['en','bn','ja'].includes(stored))language=stored;}catch{}

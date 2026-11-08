@@ -1,12 +1,12 @@
-import {translate} from './i18n.js?v=20261108-r9';
+import {translate} from './i18n.js?v=20261109-midnight1';
 /** Native dialog supplies focus containment, Escape, and focus restoration. */
 export function initImagePreview(){
  const dialog=document.createElement('dialog');dialog.className='image-dialog';dialog.setAttribute('aria-labelledby','preview-title');
  const header=document.createElement('div');header.className='preview-header';
  const title=document.createElement('h2');title.id='preview-title';
- const close=document.createElement('button');close.type='button';close.className='preview-close';close.textContent='×';
- const download=document.createElement('a');download.className='preview-download';download.download='';
- const image=document.createElement('img');
+ const close=document.createElement('button');close.type='button';close.className='preview-close';close.textContent='×';close.setAttribute('aria-label','Close image preview');close.setAttribute('data-i18n-aria-label','Close image preview');
+ const download=document.createElement('a');download.className='preview-download';download.download='';download.href=document.querySelector('[data-preview-src]').dataset.previewSrc;download.textContent='Download ↓';
+ const image=document.createElement('img');image.setAttribute('data-i18n-dynamic','');
  const status=document.createElement('p');status.className='preview-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
  header.append(title,close);dialog.append(header,status,image,download);document.body.append(dialog);
  let request=0;

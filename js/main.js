@@ -1,10 +1,11 @@
-import {initProfile} from './profile.js?v=20261108-r9';
-import {initNavigation} from './navigation.js?v=20261108-r9';
-import {renderCertificates} from './certificates.js?v=20261108-r9';
-import {initImagePreview} from './preview.js?v=20261108-r9';
-import {initEffects} from './effects.js?v=20261108-r9';
-import {initLanguage,translate,translatePage} from './i18n.js?v=20261108-r9';
-import {portfolio as data} from './portfolio-data.js?v=20261108-r9';
+import {initCVPreview} from './cv.js?v=20261109-midnight1';
+import {initProfile} from './profile.js?v=20261109-midnight1';
+import {initNavigation} from './navigation.js?v=20261109-midnight1';
+import {renderCertificates} from './certificates.js?v=20261109-midnight1';
+import {initImagePreview} from './preview.js?v=20261109-midnight1';
+import {initEffects} from './effects.js?v=20261109-midnight1';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-midnight1';
+import {portfolio as data} from './portfolio-data.js?v=20261109-midnight1';
 initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -22,8 +23,8 @@ function renderProjects(category='All projects') {
  let normalHeading=false;
  $('#project-grid').replaceChildren();
  for(const project of projects){
-  if(category==='All projects'){if(project===projects[0])$('#project-grid').append(element('h3','project-group-title','Featured projects'));if(!project.featured&&!normalHeading){$('#project-grid').append(element('h3','project-group-title','More projects'));normalHeading=true;}}
-  const card=element('article','project-card'+(project.featured?' featured-card':''));
+  if(category==='All projects'){if(project===projects[0])$('#project-grid').append(element('p','project-group-title','Featured projects'));if(!project.featured&&!normalHeading){$('#project-grid').append(element('p','project-group-title','More projects'));normalHeading=true;}}
+  const card=element('article','project-card'+(project.featured?' featured-card':''));card.style.setProperty('--stagger',Math.min(projects.indexOf(project),5)*35+'ms');
   const art=element('div','project-art');
   if(project.image){
    const image=element('img','project-screenshot');image.src=project.image;image.alt=project.name+' — Project screenshot';image.loading='lazy';image.width=900;image.height=440;
@@ -45,20 +46,18 @@ for(const cv of data.resumes){
  const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);
  if(cv.path){const link=element('a','','Download ↓');link.href=cv.path;link.download='';card.append(link);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions .secondary');heroCV.href=cv.path;heroCV.download='';}}
  else card.append(element('span','asset-status','PDF not supplied'));
+ if(cv.path){const actions=element('div','resume-actions');const download=card.querySelector('a[download]');const preview=element('button','cv-preview','View CV');preview.type='button';preview.dataset.cvSrc=cv.path;preview.setAttribute('aria-haspopup','dialog');actions.append(preview,download);card.append(actions);}
  $('#resume-list').append(card);
 }
-const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#0a1020':'#bfdce2';themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme-cyan')==='dark'?'dark':'light');}catch{setTheme('light');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme-cyan',theme);}catch{}});
+const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#080f1f':'#edf3fa';themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme-midnight')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme-midnight',theme);}catch{}});
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){if(data.effects.reveal&&!reduced.matches)entry.target.classList.add('section-arrived');observer.unobserve(entry.target);}},{threshold:.08});document.querySelectorAll('main>.section,.journey-grid .section').forEach(x=>observer.observe(x));
-const navLinks=[...document.querySelectorAll('.sidebar nav a')];const sectionObserver=new IntersectionObserver(entries=>{const active=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(active){navLinks.forEach(a=>{const selected=a.hash==='#'+active.target.id;a.classList.toggle('active',selected);if(selected)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});$('.breadcrumb strong').textContent=navLinks.find(a=>a.hash==='#'+active.target.id)?.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,'')||translate('Home');}},{rootMargin:'-5% 0px -55% 0px',threshold:0});document.querySelectorAll('section[id]').forEach(s=>sectionObserver.observe(s));
 initNavigation();
 initImagePreview();
+initCVPreview();
 initEffects(data.effects);
 
 initLanguage();
 setTheme(document.documentElement.dataset.theme);
-document.addEventListener("languagechange",()=>{setTheme(document.documentElement.dataset.theme);const count=$("#project-grid").querySelectorAll(".project-card").length;$("#project-status").textContent=count+" "+translate("projects shown");const active=document.querySelector(".sidebar nav a.active");if(active)$(".breadcrumb strong").textContent=active.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,"");});
-
-// Honor shared section URLs after dynamic content has finished rendering.
-if(location.hash){const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant'}));}
+document.addEventListener("languagechange",()=>{setTheme(document.documentElement.dataset.theme);const count=$("#project-grid").querySelectorAll(".project-card").length;$("#project-status").textContent=count+" "+translate("projects shown");});
