@@ -24,7 +24,7 @@ html[data-theme=light] .sidebar{background:linear-gradient(180deg,#fff,#edf2fb)}
 .certificate-image{height:auto;aspect-ratio:1.5;object-fit:contain}
 .certificate-actions>*{min-height:44px;overflow-wrap:anywhere}
 main,.hero-copy,.about-grid>*,.practice-panel>*,.top-actions{min-width:0}
-@media(min-width:761px) and (max-width:1199px){.certificate-list{grid-template-columns:repeat(2,minmax(0,1fr))}.certificate-card:last-child{grid-column:1/-1}.certificate-actions>*{flex:1 1 140px}}
+@media(min-width:761px) and (max-width:1199px){.certificate-list{grid-template-columns:repeat(2,minmax(0,1fr))}.certificate-actions>*{flex:1 1 140px}}
 @media(max-width:760px){
  .sidebar{inset:auto;border-right:0;overflow:visible}
  .sidebar nav{min-width:0;max-width:100%;scrollbar-width:thin;padding-bottom:7px}
@@ -44,3 +44,17 @@ main,.hero-copy,.about-grid>*,.practice-panel>*,.top-actions{min-width:0}
 @media(max-width:360px){.certificate-actions{flex-direction:column}.certificate-actions>*{flex:auto;width:100%}.topbar{padding-left:6%;padding-right:6%}}
 
 .contact-hometown{font-size:13px;color:var(--muted);margin-top:7px}
+
+/* Project-style certificate cards flow into as many rows as the data needs. */
+.certificate-list{align-items:stretch;grid-auto-rows:1fr}
+.certificate-card{display:flex;flex-direction:column;background:linear-gradient(140deg,#17243a,#111b2d);border-radius:17px;box-shadow:0 8px 25px #00000012;transition:border-color .22s,box-shadow .22s,transform .22s}
+.certificate-details{display:flex;flex-direction:column;flex:1;padding:22px}
+.certificate-details h3{font-size:18px}
+.certificate-actions{margin-top:auto;padding-top:18px}
+.certificate-image,.certificate-art{aspect-ratio:auto;height:190px;flex-shrink:0}
+.certificate-art{display:grid;place-items:center;background:radial-gradient(ellipse at 50% 80%,#8864c940,transparent 70%),#221f39}
+.certificate-symbol{display:grid;place-items:center;width:76px;height:76px;font-size:45px;color:#b4c9ff;border:1px solid #829bcb44;border-radius:18px;transform:rotate(-8deg)}
+.certificate-card:hover,.certificate-card:focus-within{border-color:#83aaff;box-shadow:0 15px 35px #0003;transform:translateY(-3px)}
+html[data-theme=light] .certificate-card{background:linear-gradient(145deg,#fff,#f2f6fe)}
+@media(max-width:760px){.certificate-list{grid-auto-rows:auto}.certificate-image,.certificate-art{height:200px}.certificate-details{padding:20px}}
+@media(prefers-reduced-motion:reduce){.certificate-card{transition:none}.certificate-card:hover{transform:none}}

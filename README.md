@@ -96,3 +96,7 @@ The English copy uses short sentences and common words. Official course titles a
 `js/preview.js` handles preview loading, readable error messages, downloads, Escape dismissal, and focus restoration. Use `tests/certificates.cjs` to check real image download, localized controls, failure handling, and small-screen layout.
 
 Education and Certificates are independent sections in `index.html`. Responsive certificate layout is controlled by the final rules in `css/polish.css`: one column on small screens, two on medium screens, and three on large screens. Run `tests/responsive.cjs` with the same optional Playwright setup to verify section order, width, overflow, and touch targets.
+
+### Add another certificate
+
+Add an object to `certifications` in `js/portfolio-data.js` with `date`, `title`, `issuer`, and `image` (a path under `assets/certificates/`, or `null` until supplied). Commit both the image and the data change. The project-style grid creates new rows automatically: three cards per row on large screens, two on medium screens, one on mobile. Nine certificates fill three large-screen rows; a tenth starts the next row. There is no nine-card limit, and no empty/fake certificate cards are added to fill rows.

@@ -88,3 +88,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Certificate cards use one column on mobile, two on medium screens, and three on large screens. Education entries stack on small screens. Mobile sidebar navigation scrolls horizontally and certificate controls have at least 44px touch targets.
 - Responsive suite passed at 320, 360, 390, 600, 768, 1024, 1440, and 1920px: no horizontal document overflow, equal section widths, and certificate controls fitting their container with touch target sizing. Bengali/Japanese mobile overflow checks passed.
 - Certificate suite passed again, including actual downloads, preview focus and Escape, translated controls, and image failure handling. These checks cover representative screen sizes, not every physical device/browser.
+
+## Automatic certificate card rows
+
+- Styled certificate cards like project cards, with consistent artwork height, card surfaces, aligned actions, and hover/focus highlighting. Missing images use a decorative symbol while keeping the missing-image status and no dead actions.
+- Removed forced full-row spanning of the final tablet card. New certificates now flow naturally through the grid.
+- Responsive and certificate-action suites passed. Added a browser-only fixture of ten records: confirmed three cards per desktop row, nine filling three rows, and a tenth starting a fourth. The fixture never changes production data; the site retains its three real training records.

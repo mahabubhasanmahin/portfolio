@@ -13,6 +13,8 @@ export function renderCertificates(certificates,container){
    const download=make('a','certificate-download','Download certificate');download.href=certificate.image;download.download=certificate.image.split('/').pop();
    actions.append(view,download);details.append(actions);card.append(image);
    image.addEventListener('error',()=>{image.hidden=true;actions.hidden=true;status.hidden=false;},{once:true});
+  }else{
+   const placeholder=make('div','certificate-art');placeholder.setAttribute('aria-hidden','true');placeholder.append(make('span','certificate-symbol','◇'));card.append(placeholder);
   }
   card.append(details);container.append(card);
  });
