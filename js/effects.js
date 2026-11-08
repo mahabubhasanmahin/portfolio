@@ -3,9 +3,9 @@ export function initEffects(config) {
  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
  const fine = matchMedia('(hover: hover) and (pointer: fine)');
  const root = document.documentElement;
- const cards = '.project-card, .skill-card, .quick-card, .resume-card';
+ const cards = '.project-card, .skill-card, .quick-card, .resume-card, .certificate-card';
  const buttons = '.button, #theme-toggle, .filter-row button, .top-contact, .project-link';
- let scene, frame=0, pending, hovered;
+ let scene, frame=0, scrollFrame=0, pending, hovered;
  if(config.background){
   scene=document.createElement('div');scene.className='ambient-scene';scene.setAttribute('aria-hidden','true');
   for(const className of ['ambient-grid','ambient-orb orb-blue','ambient-orb orb-cyan','geometry geometry-cube','geometry geometry-ring','geometry geometry-diamond']){
@@ -14,7 +14,7 @@ export function initEffects(config) {
   document.body.prepend(scene);
  }
  function clearCard(){if(!hovered)return;hovered.classList.remove('pointer-lit');for(const name of ['--pointer-x','--pointer-y','--tilt-x','--tilt-y'])hovered.style.removeProperty(name);hovered=undefined;}
- function reset(){cancelAnimationFrame(frame);frame=0;pending=undefined;clearCard();scene?.style.removeProperty('--scene-x');scene?.style.removeProperty('--scene-y');}
+ function reset(){cancelAnimationFrame(frame);cancelAnimationFrame(scrollFrame);frame=0;scrollFrame=0;pending=undefined;clearCard();scene?.style.removeProperty('--scene-x');scene?.style.removeProperty('--scene-y');scene?.style.removeProperty('--scroll-offset');}
  function sync(){reset();const active=fine.matches&&!reduced.matches;root.dataset.pointerEffects=String(active);root.dataset.buttonEffects=String(Boolean(config.buttons&&!reduced.matches));}
  function paint(){
   frame=0;if(!pending||document.hidden)return;const {x,y,target}=pending;pending=undefined;
@@ -30,6 +30,8 @@ export function initEffects(config) {
   if(!fine.matches||reduced.matches||event.pointerType!=='mouse'||document.hidden)return;
   pending={x:event.clientX,y:event.clientY,target:event.target};if(!frame)frame=requestAnimationFrame(paint);
  },{passive:true});
+ function scrollBackground(){scrollFrame=0;if(scene&&fine.matches&&!reduced.matches&&!document.hidden&&innerWidth>760)scene.style.setProperty('--scroll-offset',`${Math.min(scrollY*.025,90)}px`);}
+ window.addEventListener('scroll',()=>{if(!scene||reduced.matches||!fine.matches||document.hidden||innerWidth<=760)return;if(!scrollFrame)scrollFrame=requestAnimationFrame(scrollBackground);},{passive:true});
  document.documentElement.addEventListener('pointerleave',reset);
  window.addEventListener('blur',reset);document.addEventListener('visibilitychange',reset);
  document.addEventListener('click',event=>{

@@ -45,14 +45,14 @@ To turn off an effect, set its option to `false` in the `effects` object. Motion
 
 | File | Upload path |
 | --- | --- |
-| Profile photo | `assets/images/profile.jpg` |
+| Profile photo | `assets/images/profile.png` |
 | IGPC certificate | `assets/certificates/igpc-2026.jpg` |
 | BFS screenshot | `assets/projects/bfs-crawler.png` |
 | Duplicate Finder screenshot | `assets/projects/duplicate-finder.png` |
 | Crop screenshot | `assets/projects/crop-recommendation.png` |
 | CV (already added; replace when needed) | `assets/cv/resume.pdf` |
 
-The five missing image paths are already set up. Upload the files and commit them to `main`; they will appear after deployment. Keep the exact spelling and file type. See [the upload guide](assets/UPLOAD-GUIDE.md) for details.
+All listed images are now uploaded and active. Replace a file at the same path and commit it to `main`; the update will appear after deployment. Keep the exact spelling and file type. See [the upload guide](assets/UPLOAD-GUIDE.md) for details.
 
 ## Publish updates
 
@@ -75,7 +75,7 @@ Add `https://mahabubhasanmahin.github.io/portfolio/` to [Google Search Console](
 
 ## Checks
 
-Browser checks cover mobile layouts, filters, language switching, certificate downloads, image previews, and reduced motion. See [VALIDATION.md](VALIDATION.md) for results and limits. Missing images and live-demo availability are listed there.
+Browser checks cover mobile layouts, filters, language switching, certificate downloads, image previews, and reduced motion. See [VALIDATION.md](VALIDATION.md) for results and limits. Live-demo availability and other check limits are listed there.
 
 Optional test tools are separate from the website:
 
@@ -89,3 +89,11 @@ Start the local server first. Use your installed Chromium path. Set `TEST_URL` i
 ## Contact
 
 [Email](mailto:mahabubhasanmahin231@gmail.com) · [GitHub](https://github.com/mahabubhasanmahin) · [LinkedIn](https://linkedin.com/in/md-mahabub-hasan-mahin-54908229a)
+
+## Home and project updates
+
+The profile uses `assets/images/profile.png`; the file extension must match the `photo` setting. Replace the CV at `assets/cv/resume.pdf` when you have a new version.
+
+The first three projects have `featured: true` in `js/portfolio-data.js`. They appear first with larger screenshots; the remaining projects follow below. Each project has editable `work` and `learning` notes, shown inside Project details. These notes describe the supplied project features and practice topics, without claiming a team role or advanced expertise. Edit them to reflect your exact contribution. `currentFocus` holds the research-paper-in-progress line; no title, topic, or publication claim is shown.
+
+The compact mobile menu is in `js/navigation.js`. Home and featured styles are in `css/refresh.css`. The section reveal adds a short border/glow change while keeping text still. Background scroll movement is limited to decorative layers, disabled on mobile/coarse pointers and reduced-motion settings. Hover timing is shared across cards and buttons.

@@ -1,6 +1,20 @@
 // Each row is [English, বাংলা, 日本語]. Brand names and technology names stay unchanged.
 const rows = [
-["Living in","বর্তমানে থাকি","現在の居住地"],["Hometown","নিজ শহর","出身地"],["Rangpur, Bangladesh","রংপুর, বাংলাদেশ","ロングプール、バングラデシュ"],
+ [
+  "Living in",
+  "বর্তমানে থাকি",
+  "現在の居住地"
+ ],
+ [
+  "Hometown",
+  "নিজ শহর",
+  "出身地"
+ ],
+ [
+  "Rangpur, Bangladesh",
+  "রংপুর, বাংলাদেশ",
+  "ロングプール、バングラデシュ"
+ ],
  [
   "View image",
   "ছবি বড় করে দেখুন",
@@ -750,12 +764,167 @@ const rows = [
   "Close",
   "বন্ধ করুন",
   "閉じる"
+ ],
+ [
+  "Featured projects",
+  "নির্বাচিত প্রজেক্ট",
+  "注目のプロジェクト"
+ ],
+ [
+  "More projects",
+  "আরও প্রজেক্ট",
+  "その他のプロジェクト"
+ ],
+ [
+  "Project details",
+  "প্রজেক্টের বিস্তারিত",
+  "プロジェクトの詳細"
+ ],
+ [
+  "What it does",
+  "যা করে",
+  "できること"
+ ],
+ [
+  "My work",
+  "আমার কাজ",
+  "取り組んだ内容"
+ ],
+ [
+  "What I learned",
+  "যা শিখেছি",
+  "学んだこと"
+ ],
+ [
+  "Open menu",
+  "মেনু খুলুন",
+  "メニューを開く"
+ ],
+ [
+  "Close menu",
+  "মেনু বন্ধ করুন",
+  "メニューを閉じる"
+ ],
+ [
+  "Currently working on a research paper.",
+  "বর্তমানে একটি গবেষণাপত্র নিয়ে কাজ করছি।",
+  "現在、研究論文に取り組んでいます。"
+ ],
+ [
+  "Browser encryption, sign-in, and links that expire.",
+  "ব্রাউজারে এনক্রিপশন, সাইন ইন এবং নির্দিষ্ট সময় পর বন্ধ হয় এমন লিংক।",
+  "ブラウザーでの暗号化、ログイン、期限付きリンク。"
+ ],
+ [
+  "Practice focus: Web Crypto, JWT, and connecting a browser to Flask.",
+  "চর্চার বিষয়: Web Crypto, JWT এবং ব্রাউজারের সঙ্গে Flask সংযোগ।",
+  "練習した分野：Web Crypto、JWT、ブラウザーとFlaskの接続。"
+ ],
+ [
+  "Location-based SOS alerts, notifications, storage, and maps.",
+  "অবস্থানভিত্তিক SOS সতর্কতা, নোটিফিকেশন, স্টোরেজ ও ম্যাপ।",
+  "位置情報付きSOS、通知、保存機能、地図。"
+ ],
+ [
+  "Practice focus: location access, map tools, and cloud services.",
+  "চর্চার বিষয়: অবস্থানের অনুমতি, ম্যাপ টুল ও ক্লাউড সার্ভিস।",
+  "練習した分野：位置情報の取得、地図ツール、クラウドサービス。"
+ ],
+ [
+  "A photo upload page and a face age estimation workflow.",
+  "ছবি আপলোডের পেজ ও মুখের ছবি থেকে বয়স অনুমানের ধাপ।",
+  "写真アップロード画面と顔画像からの年齢推定の流れ。"
+ ],
+ [
+  "Practice focus: OpenCV, model output, and connecting Python to a web app.",
+  "চর্চার বিষয়: OpenCV, মডেলের ফল এবং ওয়েব অ্যাপের সঙ্গে Python সংযোগ।",
+  "練習した分野：OpenCV、モデルの出力、Pythonとウェブアプリの接続。"
+ ],
+ [
+  "Food browsing, user sign-in, roles, and cart features.",
+  "খাবার দেখা, ব্যবহারকারীর সাইন ইন, ভূমিকা ও কার্ট সুবিধা।",
+  "料理の閲覧、ログイン、ユーザー権限、カート機能。"
+ ],
+ [
+  "Practice focus: PHP, database queries, and user sessions.",
+  "চর্চার বিষয়: PHP, ডেটাবেস কুয়েরি ও ইউজার সেশন।",
+  "練習した分野：PHP、データベースのクエリ、ユーザーセッション。"
+ ],
+ [
+  "A Java server and clients that send and receive alerts.",
+  "সতর্কতা পাঠানো ও পাওয়ার জন্য Java সার্ভার ও ক্লায়েন্ট।",
+  "通知を送受信するJavaのサーバーとクライアント。"
+ ],
+ [
+  "Practice focus: sockets, threads, and Java Swing.",
+  "চর্চার বিষয়: সকেট, থ্রেড ও Java Swing।",
+  "練習した分野：ソケット、スレッド、Java Swing。"
+ ],
+ [
+  "Quiz questions, answer checks, and results stored in MySQL.",
+  "কুইজের প্রশ্ন, উত্তর যাচাই ও MySQL-এ ফল সংরক্ষণ।",
+  "クイズの問題、解答判定、MySQLへの結果保存。"
+ ],
+ [
+  "Practice focus: Java, SQL, and database-backed apps.",
+  "চর্চার বিষয়: Java, SQL ও ডেটাবেসযুক্ত অ্যাপ।",
+  "練習した分野：Java、SQL、データベース連携アプリ。"
+ ],
+ [
+  "A menu, order input, and bill calculation in Assembly.",
+  "Assembly দিয়ে মেনু, অর্ডার নেওয়া ও বিল হিসাব।",
+  "Assemblyによるメニュー、注文入力、会計計算。"
+ ],
+ [
+  "Practice focus: low-level input, output, and program flow.",
+  "চর্চার বিষয়: লো-লেভেল ইনপুট, আউটপুট ও প্রোগ্রামের ধাপ।",
+  "練習した分野：低水準の入出力、プログラムの流れ。"
+ ],
+ [
+  "Web page links visited in breadth-first order.",
+  "ব্রেডথ-ফার্স্ট ক্রমে ওয়েব পেজের লিংক দেখা।",
+  "幅優先順でウェブページのリンクを訪問。"
+ ],
+ [
+  "Practice focus: queues, graphs, and the BFS algorithm.",
+  "চর্চার বিষয়: কিউ, গ্রাফ ও BFS অ্যালগরিদম।",
+  "練習した分野：キュー、グラフ、BFSアルゴリズム。"
+ ],
+ [
+  "File checks for possible duplicates and empty files or folders.",
+  "সম্ভাব্য ডুপ্লিকেট এবং খালি ফাইল বা ফোল্ডার পরীক্ষা।",
+  "重複の可能性や、空のファイル・フォルダーの確認。"
+ ],
+ [
+  "Practice focus: Bash, Linux commands, and file hashes.",
+  "চর্চার বিষয়: Bash, Linux কমান্ড ও ফাইল হ্যাশ।",
+  "練習した分野：Bash、Linuxコマンド、ファイルハッシュ。"
+ ],
+ [
+  "Crop suggestions based on soil and weather inputs.",
+  "মাটি ও আবহাওয়ার তথ্য অনুযায়ী ফসলের সুপারিশ।",
+  "土壌と天気の入力に基づく作物の提案。"
+ ],
+ [
+  "Practice focus: preparing input data and using model predictions.",
+  "চর্চার বিষয়: ইনপুট ডেটা প্রস্তুত করা ও মডেলের অনুমান ব্যবহার।",
+  "練習した分野：入力データの準備とモデルの予測の利用。"
+ ],
+ [
+  "Views of digital signals and errors caused by noise.",
+  "ডিজিটাল সিগন্যাল ও নয়েজের কারণে হওয়া ত্রুটি দেখা।",
+  "デジタル信号と雑音による誤りの表示。"
+ ],
+ [
+  "Practice focus: line coding, signal plots, and communication basics.",
+  "চর্চার বিষয়: লাইন কোডিং, সিগন্যাল প্লট ও যোগাযোগের প্রাথমিক ধারণা।",
+  "練習した分野：ライン符号化、信号のグラフ、通信の基礎。"
  ]
 ];
 const dictionary=new Map(rows.map(([en,bn,ja])=>[en,{en,bn,ja}]));
 const originals=new WeakMap();const originalAttrs=new WeakMap();
 let language='en';
-export function translate(text){return dictionary.get(text)?.[language]||text;}
+export function translate(text){if(typeof text!=='string')return text;return dictionary.get(text)?.[language]||text.split(' — ').map(part=>dictionary.get(part)?.[language]||part).join(' — ');}
 export function translatePage(root=document.body){
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:node=>node.parentElement.closest('script,style,code,pre,select')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
