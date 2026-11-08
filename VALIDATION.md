@@ -43,3 +43,13 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - The existing smoke suite passed again after the changes. Tests are in `tests/languages.cjs` and `tests/smoke.cjs`; set `TEST_URL` to override the local test server URL.
 - Project repository links were removed from cards. Live demos use a configurable `demo` URL; all currently remain null because the old portfolio request returned HTTP 403. Demo URL extraction and actual live-demo navigation remain blocked until source access or owner-supplied URLs are available.
 - Bengali desktop rendering was visually inspected; translation wording has not been professionally reviewed.
+
+## Interactive effects and supplied CV update
+
+- Added optional mouse spotlight, bounded project tilt, hover sheen, click/keyboard ripple, perspective grid, floating geometric outlines, and restrained background parallax. Native cursor and readable content are preserved.
+- Inspected the supplied HTML, CSS, and JavaScript as reference data without executing them. Recovered four live-demo destinations from the supplied JavaScript and installed the authentic supplied CV as `assets/cv/resume.pdf`. Hosted demo availability remains unverified.
+- Effects suite passed: four demo links, no project repository links, spotlight activation, tilt activation, pointer exit reset, ripple creation/cleanup, decorative semantics, reduced-motion disabling of pointer effects/background/ripple, mobile overflow, hidden mobile geometry, disabled touch tracking, and no runtime errors.
+- Smoke suite passed with a real CV download link and PDF signature check. Three-language suite passed again, including all 12 viewport/language overflow checks.
+- Test harness corrections: waited for the asynchronous media-query change event before checking reduced-motion state, and used an absolute request URL for the PDF assertion. Reruns passed.
+- Desktop rendering was visually inspected after effects settled. Profile/certificate images shown inline in chat are not available as local image files; no generated or substitute person was used. The profile placeholder remains until `assets/images/profile.jpg` is supplied as a file.
+- Repeat effects checks with the README's Playwright setup: `TEST_URL=http://127.0.0.1:8000 node tests/effects.cjs` (set NODE_PATH/CHROMIUM_PATH as needed).

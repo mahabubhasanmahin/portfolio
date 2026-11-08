@@ -3,7 +3,7 @@ export const portfolio = {
  intro: 'Turning curiosity into code, one project at a time. I’m a computer science undergraduate exploring backend development, practical software, and the art of problem solving.',
  about: 'I’m pursuing a B.Sc. in Computer Science and Engineering at Green University of Bangladesh. My learning is grounded in building academic and personal projects, practicing C++, and exploring how software works behind the scenes. I’m looking for internship and entry-level opportunities where I can learn, contribute, and grow.',
  photo: 'assets/images/profile.jpg', resumes: [{name:'My CV',path:'assets/cv/resume.pdf'}],
- effects: {reveal:true, tilt:true, tiltDegrees:3},
+ effects: {reveal:true, tilt:true, tiltDegrees:4, spotlight:true, buttons:true, background:true},
  socials: {GitHub:'https://github.com/mahabubhasanmahin',LinkedIn:'https://linkedin.com/in/md-mahabub-hasan-mahin-54908229a',Codeforces:'https://codeforces.com/profile/MahabubHasanMahin',Facebook:'https://facebook.com/md.mahin.2002'},
  skills: [
  ['Core foundations','C++','Problem Solving','Selected DSA Topics','OOP Basics'],
@@ -13,10 +13,10 @@ export const portfolio = {
  ['Networking · fundamentals','TCP/IP','DNS','DHCP','LAN/WAN','Wi-Fi','Java Socket Programming'],
  ['Developer tools','Git','GitHub','Ubuntu/Linux CLI','Bash','Windows Troubleshooting']],
  projects: [
- {name:'Cipher Vault',category:'Backend',icon:'⌘',description:'Client-side encryption vault with Flask endpoints, JWT authentication, and expiring share links.',stack:['Flask','MongoDB','Web Crypto API','JWT'],demo:null},
- {name:'Smart Safety Awareness Network',category:'Web',icon:'◎',description:'GPS SOS alerts, notifications, media storage, and interactive maps.',stack:['JavaScript','Firebase','Supabase','Leaflet.js'],demo:null},
- {name:'AI Face Age Detection',category:'AI / ML',icon:'◉',description:'Face age estimation using computer vision and machine learning.',stack:['Python','Flask','OpenCV','PyTorch','PostgreSQL'],demo:null},
- {name:'FoodieHub',category:'Web',icon:'♧',description:'A food ordering project with login, user roles, and cart functionality.',stack:['PHP','MySQL','JavaScript','HTML','CSS'],demo:null},
+ {name:'Cipher Vault',category:'Backend',icon:'⌘',description:'Client-side encryption vault with Flask endpoints, JWT authentication, and expiring share links.',stack:['Flask','MongoDB','Web Crypto API','JWT'],demo:'https://ciphervault22.netlify.app/'},
+ {name:'Smart Safety Awareness Network',category:'Web',icon:'◎',description:'GPS SOS alerts, notifications, media storage, and interactive maps.',stack:['JavaScript','Firebase','Supabase','Leaflet.js'],demo:'https://ssan-web-kappa.vercel.app/'},
+ {name:'AI Face Age Detection',category:'AI / ML',icon:'◉',description:'Face age estimation using computer vision and machine learning.',stack:['Python','Flask','OpenCV','PyTorch','PostgreSQL'],demo:'https://aifaceage.netlify.app/'},
+ {name:'FoodieHub',category:'Web',icon:'♧',description:'A food ordering project with login, user roles, and cart functionality.',stack:['PHP','MySQL','JavaScript','HTML','CSS'],demo:'https://onlinefoodorderingsystemh.netlify.app/'},
  {name:'Alert & Notification System',category:'Systems',icon:'⌁',description:'A client-server notification application built with Java.',stack:['Java','Swing','Sockets','Multithreading'],demo:null},
  {name:'E-Learning Quiz Platform',category:'Systems',icon:'▤',description:'An academic quiz and learning management project.',stack:['Java','MySQL'],demo:null},
  {name:'Restaurant Management System',category:'Systems',icon:'◇',description:'A restaurant management project exploring low-level programming concepts.',stack:['Assembly'],demo:null},

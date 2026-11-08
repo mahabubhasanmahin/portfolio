@@ -24,7 +24,7 @@ For a local VS Code checkout, open the project directory and run `python3 -m htt
 
 ### Authentic assets still needed
 
-No profile photograph, reference video, certificate images, or CV PDF were supplied. The portrait uses an explicitly labeled initials placeholder, project artwork is decorative illustration, and CV cards show “PDF not supplied.” No synthetic person or fake download is used.
+The supplied `mahin_CV.pdf` is installed as `assets/cv/resume.pdf`. The uploaded source files were inspected as reference material, rather than executed or used to replace the existing application. A local profile photo and certificate image files still need to be added. The portrait uses an explicitly labeled initials placeholder, project artwork is decorative illustration, and the CV card exposes the authentic PDF download. No synthetic person or fake download is used.
 
 Place the authentic files at these paths (case-sensitive):
 
@@ -61,4 +61,16 @@ Browser smoke checks are preserved in `tests/smoke.cjs`; see `VALIDATION.md` for
 
 ## Readability and languages
 
-The header language selector supports English, বাংলা, and 日本語, updates the document language, and remembers the choice. Technology and project names retain their original spelling. Body content is at least 15–16px with stronger secondary-text contrast. Review Bengali/Japanese translations before publication for your preferred wording. Live URLs could not be recovered from the old portfolio because access returned 403. Supply verified URLs in each project’s `demo` property.
+The header language selector supports English, বাংলা, and 日本語, updates the document language, and remembers the choice. Technology and project names retain their original spelling. Body content is at least 15–16px with stronger secondary-text contrast. Review Bengali/Japanese translations before publication for your preferred wording. Four live URLs were recovered from the owner-supplied `main (1).js`: Cipher Vault, SSAN, AI Face Age Detection, and FoodieHub. They are owner-supplied destinations; availability of the hosted services is not independently verified. Other projects retain no demo URL.
+
+## Mouse, button, and background effects
+
+`js/effects.js` manages pointer spotlight, project tilt, button ripple, and background parallax. `css/effects.css` controls their appearance. Change the `effects` object in `js/portfolio-data.js`:
+
+- `spotlight`: mouse-following highlights on cards.
+- `tilt` and `tiltDegrees`: project-card perspective; the angle is capped at 8 degrees.
+- `buttons`: hover sheen and click ripple (keyboard activation is supported).
+- `background`: decorative gradient orbs, perspective grid, and floating outlines.
+- `reveal`: existing scroll transitions.
+
+Pointer work uses a single scheduled animation frame only when the mouse moves. It resets on pointer exit, blur, visibility changes, or motion-preference changes. Touch devices disable tracking, narrow screens hide geometry, and reduced-motion mode hides the background and removes tilt/ripple. Native cursors, keyboard focus, and readable text remain intact. No animation library or 3D runtime is required.

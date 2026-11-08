@@ -1,3 +1,4 @@
+import {initEffects} from './effects.js';
 import {initLanguage,translate,translatePage} from './i18n.js';
 import {portfolio as data} from './portfolio-data.js';
 const $ = selector => document.querySelector(selector);
@@ -22,10 +23,10 @@ if(await assetExists(data.photo,'image/')){const img=$('#profile');img.onload=()
 for(const cv of data.resumes){const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);if(await assetExists(cv.path,'application/pdf')){const a=element('a','','Download ↓');a.href=cv.path;a.download='';card.append(a);}else card.append(element('span','asset-status','PDF not supplied'));$('#resume-list').append(card);}
 const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme',theme);}catch{}});
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-if(!data.effects.reveal&&!data.effects.tilt)document.documentElement.dataset.effects='off';
+if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){if(data.effects.reveal&&!reduced.matches)entry.target.classList.add('reveal');observer.unobserve(entry.target);}},{threshold:.08});document.querySelectorAll('main>.section,.journey-grid .section').forEach(x=>observer.observe(x));
 const navLinks=[...document.querySelectorAll('.sidebar nav a')];const sectionObserver=new IntersectionObserver(entries=>{const active=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(active){navLinks.forEach(a=>{const selected=a.hash==='#'+active.target.id;a.classList.toggle('active',selected);if(selected)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});$('.breadcrumb strong').textContent=navLinks.find(a=>a.hash==='#'+active.target.id)?.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,'')||'Overview';}},{rootMargin:'-5% 0px -55% 0px',threshold:0});document.querySelectorAll('section[id]').forEach(s=>sectionObserver.observe(s));
-$('#project-grid').addEventListener('pointermove',event=>{if(!data.effects.tilt||reduced.matches||event.pointerType!=='mouse')return;const card=event.target.closest('.project-card');if(!card)return;const rect=card.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width-.5;const y=(event.clientY-rect.top)/rect.height-.5;card.style.transform=`perspective(900px) rotateX(${-y*data.effects.tiltDegrees}deg) rotateY(${x*data.effects.tiltDegrees}deg)`;});$('#project-grid').addEventListener('pointerout',event=>{const card=event.target.closest('.project-card');if(card&&!card.contains(event.relatedTarget))card.style.transform='';});
+initEffects(data.effects);
 
 initLanguage();
 setTheme(document.documentElement.dataset.theme);
