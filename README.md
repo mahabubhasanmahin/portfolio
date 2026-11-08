@@ -38,7 +38,7 @@ Open `http://localhost:8000`. VS Code Live Server also works. Use a server rathe
 | CV preview | `js/cv.js` |
 | Certificate cards / image preview | `js/certificates.js` / `js/preview.js` |
 
-**Photo:** replace `assets/images/profile.png` with a real PNG. The hero and menu share it. Square headshots show the whole image; tall photos use cover fitting. Keep the face inside the photo. A transparent background works. To use another filename, change `photo` in the data file and both initial image sources in `index.html`. Renaming a JPG extension does not convert it to PNG.
+**Photo:** replace `assets/images/profile.png` with a real PNG. The hero and menu share it. Square headshots show the whole image; tall photos use cover fitting. Keep the face inside the photo. The transparent portrait has no colored box, border, or glow. The page background shows through in either theme; the shirt edge fades softly into it. To use another filename, change `photo` in the data file and both initial image sources in `index.html`. Renaming a JPG extension does not convert it to PNG.
 
 **Projects:** add an object to `projects`. Use `featured: true` for the first group, and `demo: null` when there is no live site. Upload a screenshot and put its relative path in `image`. Each project has editable `description`, `work`, `learning`, `stack`, and `repo`. The current work notes describe features; they do not establish individual or team roles. Replace them with your specific contribution when confirmed.
 

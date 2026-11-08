@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-midnight1';
+import {translate} from './i18n.js?v=20261109-portrait-blend';
 
 /** One active-section controller for pointer, keyboard, scroll, and history. */
 export function initNavigation(){
