@@ -1,11 +1,11 @@
-import {initNavigation} from './navigation.js';
-import {renderCertificates} from './certificates.js';
-import {initImagePreview} from './preview.js';
-import {initEffects} from './effects.js';
-import {initLanguage,translate,translatePage} from './i18n.js';
-import {portfolio as data} from './portfolio-data.js';
-// Optional upload paths become active only when a real image is present.
-await Promise.all([...data.projects,...data.certifications].map(async item=>{if(item.uploadImage&&await assetExists(item.uploadImage,'image/'))item.image=item.uploadImage;}));
+import {initProfile} from './profile.js?v=20261108-r2';
+import {initNavigation} from './navigation.js?v=20261108-r2';
+import {renderCertificates} from './certificates.js?v=20261108-r2';
+import {initImagePreview} from './preview.js?v=20261108-r2';
+import {initEffects} from './effects.js?v=20261108-r2';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261108-r2';
+import {portfolio as data} from './portfolio-data.js?v=20261108-r2';
+initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
 const external = (name,url) => {const a=element('a','',name);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;};
@@ -40,10 +40,13 @@ function renderProjects(category='All projects') {
  $('#project-status').textContent=projects.length+' '+translate('projects shown');translatePage($('#project-grid'));
 }
 for(const c of ['All projects',...new Set(data.projects.map(p=>p.category))]){const b=element('button','',c);b.type='button';b.setAttribute('aria-pressed',String(c==='All projects'));b.addEventListener('click',()=>{$('#filters').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderProjects(c);});$('#filters').append(b);}renderProjects();
-// Optional authentic assets are checked before exposing images or download links.
-async function assetExists(path,type){try{const r=await fetch(path,{method:'HEAD'});return r.ok&&(r.headers.get('content-type')||'').includes(type);}catch{return false;}}
-if(await assetExists(data.photo,'image/')){const img=$('#profile');img.onload=()=>{img.hidden=false;$('#portrait-fallback').hidden=true;};img.onerror=()=>{img.hidden=true;$('#portrait-fallback').hidden=false;};img.src=data.photo;}
-for(const cv of data.resumes){const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);if(await assetExists(cv.path,'application/pdf')){const a=element('a','','Download ↓');a.href=cv.path;a.download='';card.append(a);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions a[href="#resume"]');if(heroCV){heroCV.href=cv.path;heroCV.download='';}}}else card.append(element('span','asset-status','PDF not supplied'));$('#resume-list').append(card);}
+// Known local files link directly; network preflight checks must not block controls.
+for(const cv of data.resumes){
+ const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);
+ if(cv.path){const link=element('a','','Download ↓');link.href=cv.path;link.download='';card.append(link);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions .secondary');heroCV.href=cv.path;heroCV.download='';}}
+ else card.append(element('span','asset-status','PDF not supplied'));
+ $('#resume-list').append(card);
+}
 const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme',theme);}catch{}});
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';

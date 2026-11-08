@@ -97,3 +97,9 @@ The profile uses `assets/images/profile.png`; the file extension must match the 
 The first three projects have `featured: true` in `js/portfolio-data.js`. They appear first with larger screenshots; the remaining projects follow below. Each project has editable `work` and `learning` notes, shown inside Project details. These notes describe the supplied project features and practice topics, without claiming a team role or advanced expertise. Edit them to reflect your exact contribution. `currentFocus` holds the research-paper-in-progress line; no title, topic, or publication claim is shown.
 
 The compact mobile menu is in `js/navigation.js`. Home and featured styles are in `css/refresh.css`. The section reveal adds a short border/glow change while keeping text still. Background scroll movement is limited to decorative layers, disabled on mobile/coarse pointers and reduced-motion settings. Hover timing is shared across cards and buttons.
+
+## Asset loading and cache updates
+
+The portrait loads directly from the initial HTML, including when JavaScript is off. The website does not require HEAD requests before showing images or starting the controls. Missing project/certificate images use their normal error fallbacks. Existing uploaded image paths are stored in each record’s `image` field.
+
+To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r2`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.

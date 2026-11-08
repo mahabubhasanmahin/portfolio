@@ -111,3 +111,13 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Home-refresh suite passed: real PNG decode/display and no placeholder, three featured cards and eleven unique cards, expandable detail fields, research line, direct CV link, seven viewport overflow checks, mobile menu behavior, translated controls/image labels, reduced motion, and no runtime errors.
 - Smoke, certificate, language, effects, search/upload, preview, project-link/image, and responsive-grid suites passed with updated expectations for the owner's now-present images. Actual CV PDF and certificate image download checks passed. Homepage desktop/mobile screenshots were visually inspected.
 - New CV replacements must be named resume.pdf at assets/cv/resume.pdf. The existing authentic CV remains available until the owner replaces it.
+
+## Direct portrait loading and release consistency repair
+
+- Owner's live screenshot showed current copy but an initials placeholder. Public live image probing was denied by this environment's network policy (CONNECT 403), so the exact production response/cache state could not be observed.
+- Removed HEAD-request gating and blocking asset preflight awaits. The real uploaded PNG now has a source in initial HTML and is visible without JavaScript; `js/profile.js` handles load/error and already-cached image completion. Only an actual image loading failure reveals the placeholder.
+- Converted the now-uploaded project/certificate records to direct image paths, and initialized CV links from the supplied local PDF path. Controls no longer wait for independent metadata requests.
+- Added release query versions across HTML styles/main entry, module imports, and portrait to keep cached assets consistent. `scripts/stamp-release.py` updates the version as one repeatable step. Current release: 20261108-r2.
+- Deployment suite passed on a local server at the actual `/portfolio/` URL prefix: portrait decode/display with HEAD forbidden, no HEAD requests, current release image URL, project/certificate rendering, working controls, static HTML image source, no-JavaScript decode/display, real request-failure fallback, and no runtime errors.
+- All ten suites passed: deployment, home-refresh, smoke, certificates, languages, effects, preview, projects, responsive, and search/image-fallback checks. Full viewport checks cover 320–1920px where applicable. Deployment-path desktop rendering was visually inspected.
+- These are local browser/deployment-path checks. Published GitHub Pages state remains unverified because its host was blocked by runtime network policy.
