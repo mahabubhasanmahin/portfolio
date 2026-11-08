@@ -135,3 +135,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Increased card lift to 7px with a clear border, shadow/ring, and theme-specific surface change. Strengthened button/menu hover, image zoom, image-preview hint visibility, keyboard focus, and pressed feedback. Fine-pointer conditions limit animated hover; reduced-motion mode keeps the visual state stationary.
 - Hover-feedback suite passed in light and dark themes: border change, stronger shadow, lift, reset after exit, and stationary reduced-motion feedback.
 - Existing effects, responsive, and deployment suites passed. Release version is 20261108-r4; deployment test now checks that portrait/entry versions match instead of relying on a fixed version literal.
+
+## Coding/CSE photograph background
+
+- Replaced the blue/cyan page background with a locally stored coding/CSE photograph recovered from the owner's older website repository, optimized as WebP. Neutral overlays/surfaces keep text readable; separate light/dark opacity settings and a lighter mobile layer avoid blocking controls or scroll.
+- Removed blue grid/orb background layers while retaining button accents, hover feedback, and existing features. Source photo is decorative; it does not claim authorship of the code shown in it.
+- Confirmed the image serves successfully and is applied by the browser. Light/dark image/layout checks and stronger-hover suite passed. Desktop rendering was visually inspected. Release: 20261108-r5.

@@ -102,12 +102,16 @@ The compact mobile menu is in `js/navigation.js`. Home and featured styles are i
 
 The portrait loads directly from the initial HTML, including when JavaScript is off. The website does not require HEAD requests before showing images or starting the controls. Missing project/certificate images use their normal error fallbacks. Existing uploaded image paths are stored in each record’s `image` field.
 
-To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r4`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
+To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r5`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
 
 ## Pale cyan background and profile images
 
-`css/cyan-theme.css` defines the owner's pale blue/cyan reference palette. It is the new default theme; the dark theme remains available. The choice is saved under `mahin-theme-cyan` so previous default-dark state does not hide this new palette on first use. Text and card colors are adjusted together for readability.
+`css/cyan-theme.css` defines the owner's pale blue/cyan reference palette. The later `css/coding-background.css` layer now replaces the solid cyan page background with a local coding photograph and neutral surfaces; the dark theme remains available. The choice is saved under `mahin-theme-cyan` so previous default-dark state does not hide this new palette on first use. Text and card colors are adjusted together for readability.
 
 The hero portrait and menu avatar both use the original `assets/images/profile.png`, with CSS framing only. Replace that file to update both. `js/profile.js` handles direct loading and separate fallbacks for each image. The seven home/project/menu/motion features remain in place.
 
 Hover feedback is controlled by the final rules in `css/cyan-theme.css`: cards lift 7px, borders and shadows strengthen, and buttons/menu items change color. Fine-pointer hover and keyboard focus stay visible in both themes. Reduced-motion mode keeps feedback stationary.
+
+## Coding/CSE image background
+
+`assets/images/coding-background.webp` is the local coding photograph from the owner’s older portfolio. `css/coding-background.css` applies it behind a neutral overlay in both themes. Adjust the `body::before` opacity there to make it stronger or softer. It never intercepts clicks. The solid blue/cyan page background and blue grid/orbs are removed; blue button accents and hover states remain.
