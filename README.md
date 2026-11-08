@@ -100,3 +100,9 @@ Education and Certificates are independent sections in `index.html`. Responsive 
 ### Add another certificate
 
 Add an object to `certifications` in `js/portfolio-data.js` with `date`, `title`, `issuer`, and `image` (a path under `assets/certificates/`, or `null` until supplied). Commit both the image and the data change. The project-style grid creates new rows automatically: three cards per row on large screens, two on medium screens, one on mobile. Nine certificates fill three large-screen rows; a tenth starts the next row. There is no nine-card limit, and no empty/fake certificate cards are added to fill rows.
+
+## Search and missing-image uploads
+
+See `assets/UPLOAD-GUIDE.md` for the five exact missing-image upload paths. The `uploadImage` values are optional future image paths; the browser checks them before using them, so uploading the matching file activates it without another code change.
+
+The canonical production address is `https://mahabubhasanmahin.github.io/portfolio/`. The page includes the full name in its title and initial HTML, profile structured data, social metadata, and `sitemap.xml`. After publishing, add this URL-prefix property in Google Search Console, complete Google's ownership verification, submit `https://mahabubhasanmahin.github.io/portfolio/sitemap.xml`, and request indexing for the home page. No verification code is included because Google must issue it to the site owner. Indexing and ranking are Google's decisions and are not guaranteed. This is a project site; a robots.txt inside `/portfolio/` cannot control the entire github.io host.

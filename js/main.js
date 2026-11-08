@@ -3,10 +3,12 @@ import {initImagePreview} from './preview.js';
 import {initEffects} from './effects.js';
 import {initLanguage,translate,translatePage} from './i18n.js';
 import {portfolio as data} from './portfolio-data.js';
+// Optional upload paths become active only when a real image is present.
+await Promise.all([...data.projects,...data.certifications].map(async item=>{if(item.uploadImage&&await assetExists(item.uploadImage,'image/'))item.image=item.uploadImage;}));
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
 const external = (name,url) => {const a=element('a','',name);a.href=url;a.target='_blank';a.rel='noopener noreferrer';return a;};
-const heroName=$('#hero-name');heroName.append(document.createTextNode(data.name.replace(/^Md\. /,'').replace(new RegExp(' '+data.shortName+'$'),'')),element('br'));const lastName=element('span','',data.shortName);lastName.append(element('span','cyan','.'));heroName.append(lastName);
+const heroName=$('#hero-name');heroName.replaceChildren();heroName.append(document.createTextNode(data.name.replace(new RegExp(' '+data.shortName+'$'),'')),element('br'));const lastName=element('span','',data.shortName);lastName.append(element('span','cyan','.'));heroName.append(lastName);
 $('#headline').textContent=data.headline;$('#intro').textContent=data.intro;$('#about-copy').textContent=data.about;
 $('#email').textContent=data.email+' ↗';$('#email').href='mailto:'+data.email;$('#location').textContent=data.location;$('#hometown').textContent=data.hometown;$('#footer-name').textContent=data.name;$('#year').textContent=new Date().getFullYear();
 for(const [name,url] of Object.entries(data.socials)){$('#contact-socials').append(external(name+' ↗',url));if(['GitHub','LinkedIn'].includes(name))$('#hero-socials').append(external(name+' ↗',url));}

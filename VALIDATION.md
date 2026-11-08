@@ -94,3 +94,10 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Styled certificate cards like project cards, with consistent artwork height, card surfaces, aligned actions, and hover/focus highlighting. Missing images use a decorative symbol while keeping the missing-image status and no dead actions.
 - Removed forced full-row spanning of the final tablet card. New certificates now flow naturally through the grid.
 - Responsive and certificate-action suites passed. Added a browser-only fixture of ten records: confirmed three cards per desktop row, nine filling three rows, and a tenth starting a fourth. The fixture never changes production data; the site retains its three real training records.
+
+## Search metadata and optional image uploads
+
+- Added full-name title and initial HTML heading, canonical URL, index/follow metadata, profile structured data, social metadata, and sitemap.xml. Search tests passed for title/name presence before JavaScript, a single complete rendered heading, parsed structured data, canonical URL, and served sitemap.
+- Google indexing/ranking was not verified or promised. Google Search Console ownership verification and sitemap submission must be completed by the owner.
+- Added optional upload paths for the five missing assets and assets/UPLOAD-GUIDE.md. Browser-only mocked image responses confirmed a newly uploaded screenshot and IGPC certificate become active automatically; absent files preserve existing cards/statuses. Existing smoke suite passed again.
+- Prepared a simple GitHub profile README in the separate profile repository, correcting email, portfolio address, project details, and removing unverified counts/badges. Profile push was denied with GitHub 403; it has not been published. A copy is available outside the portfolio checkout under /workspace/shared/mahin-github-profile-README.md.
