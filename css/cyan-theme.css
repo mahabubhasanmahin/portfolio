@@ -30,3 +30,27 @@ html[data-theme=light] .ambient-orb{opacity:.35}html[data-theme=light] .geometry
 html[data-theme=light] .hero-socials,html[data-theme=light] footer,html[data-theme=light] .scene-caption,html[data-theme=light] .contact-location,html[data-theme=light] .contact-hometown{color:#3b5c72}
 @media(max-width:760px){.sidebar-avatar{width:36px;height:40px;border-radius:10px}.brand{gap:8px}.portrait-frame{border-radius:25px}.code-label{left:0;top:15px;font-size:10px}.location-label{right:0;bottom:40px}.scene-caption{font-size:10px;bottom:-2px}html[data-theme=light] .sidebar{background:#c9e1e8f7}}
 @media(prefers-reduced-motion:reduce){.portrait-frame img{width:160%;height:160%;left:-32%;top:-18%}}
+
+/* Stronger hover feedback in both themes, without shifting surrounding layout. */
+:root{--hover-lift:-7px;--hover-border:#4d8af0;--hover-ring:#4d8af025;--hover-shadow:#17385930}
+html[data-theme=dark]{--hover-border:#78b8ff;--hover-ring:#53acff26;--hover-shadow:#0008}
+@media(hover:hover) and (pointer:fine){
+ :is(.project-card,.certificate-card,.skill-card,.quick-card,.resume-card):hover{border-color:var(--hover-border);box-shadow:0 18px 38px var(--hover-shadow),0 0 0 2px var(--hover-ring);transform:translateY(var(--hover-lift))}
+ html[data-pointer-effects=true] .project-card.pointer-lit{border-color:var(--hover-border);box-shadow:0 18px 38px var(--hover-shadow),0 0 0 2px var(--hover-ring);transform:perspective(1000px) translateY(var(--hover-lift)) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg))}
+ html[data-theme=light] :is(.project-card,.certificate-card,.skill-card,.quick-card,.resume-card):hover{background:linear-gradient(135deg,#fff,#e6f2ff);border-color:var(--hover-border)}
+ html[data-theme=dark] :is(.project-card,.certificate-card,.skill-card,.quick-card,.resume-card):hover{background:linear-gradient(135deg,#203550,#15283f)}
+ :is(.button,.project-link,.certificate-preview,.certificate-download,.top-contact,.filter-row button,#theme-toggle):hover{transform:translateY(-3px);border-color:var(--hover-border);box-shadow:0 9px 22px var(--hover-shadow),0 0 0 2px var(--hover-ring)}
+ html[data-theme=light] .primary:hover{background:linear-gradient(110deg,#1748ac,#176d94);color:#fff}
+ html[data-theme=light] :is(.secondary,.project-link,.certificate-preview,.certificate-download,.top-contact,.filter-row button,#theme-toggle):hover{background:#cfe3ff;color:#143d70;border-color:#3e7aca}
+ html[data-theme=dark] :is(.secondary,.project-link,.certificate-preview,.certificate-download,.top-contact,.filter-row button,#theme-toggle):hover{background:#29486f;color:#fff}
+ .sidebar nav a:hover{background:#ddecfc;color:#173e70;border-color:#75a3d2;box-shadow:inset 4px 0 #3d7fcc;transform:translateX(4px)}
+ html[data-theme=dark] .sidebar nav a:hover{background:#233b59;color:#eef6ff;border-color:#6a9cd1}
+ .project-card:hover .project-screenshot{transform:scale(1.055)}
+ .project-card:hover .image-preview-hint{opacity:1;background:#174981;color:#fff;border-color:#9bd7ff}
+}
+:is(.project-card,.certificate-card,.resume-card):focus-within{border-color:var(--hover-border);box-shadow:0 0 0 3px var(--hover-ring),0 10px 25px var(--hover-shadow)}
+:is(.button,.project-link,.certificate-preview,.certificate-download):active{filter:brightness(.92)}
+@media(prefers-reduced-motion:reduce){
+ :is(.project-card,.certificate-card,.skill-card,.quick-card,.resume-card,.button,.project-link,.sidebar nav a):hover{transform:none!important;transition:none}
+ .project-card:hover .project-screenshot{transform:none!important}
+}

@@ -129,3 +129,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Release version updated to 20261108-r3. Desktop and mobile light-theme screenshots were visually inspected.
 - New palette suite passed: default palette, both real image decodes, avatar replacing monogram, light/dark overflow and avatar visibility across five viewport widths, persisted dark selection, consistent portrait framing with reduced motion, retained featured work/details, and no runtime errors.
 - Existing ten regression suites passed after updating expected default-theme behavior and release version. Body, secondary, and link contrast ratios against representative palette surfaces measured 9.70, 4.78, and 6.68 respectively; this is not a full accessibility audit of every gradient state.
+
+## Stronger hover feedback
+
+- Increased card lift to 7px with a clear border, shadow/ring, and theme-specific surface change. Strengthened button/menu hover, image zoom, image-preview hint visibility, keyboard focus, and pressed feedback. Fine-pointer conditions limit animated hover; reduced-motion mode keeps the visual state stationary.
+- Hover-feedback suite passed in light and dark themes: border change, stronger shadow, lift, reset after exit, and stationary reduced-motion feedback.
+- Existing effects, responsive, and deployment suites passed. Release version is 20261108-r4; deployment test now checks that portrait/entry versions match instead of relying on a fixed version literal.
