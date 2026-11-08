@@ -121,3 +121,11 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Deployment suite passed on a local server at the actual `/portfolio/` URL prefix: portrait decode/display with HEAD forbidden, no HEAD requests, current release image URL, project/certificate rendering, working controls, static HTML image source, no-JavaScript decode/display, real request-failure fallback, and no runtime errors.
 - All ten suites passed: deployment, home-refresh, smoke, certificates, languages, effects, preview, projects, responsive, and search/image-fallback checks. Full viewport checks cover 320–1920px where applicable. Deployment-path desktop rendering was visually inspected.
 - These are local browser/deployment-path checks. Published GitHub Pages state remains unverified because its host was blocked by runtime network policy.
+
+## Reference cyan palette and menu avatar
+
+- Applied a pale blue/cyan gradient based on the owner's supplied swatch, with navy text, coordinated card surfaces, and blue/cyan/purple section accents. It is the new default; explicit dark theme selection remains available and persists in its own preference key.
+- Added the actual uploaded portrait beside the sidebar brand/menu, including on mobile, with direct image loading and an independent error fallback. Adjusted hero portrait framing to show the face and upper body more clearly using CSS only; original pixels/files were not changed.
+- Release version updated to 20261108-r3. Desktop and mobile light-theme screenshots were visually inspected.
+- New palette suite passed: default palette, both real image decodes, avatar replacing monogram, light/dark overflow and avatar visibility across five viewport widths, persisted dark selection, consistent portrait framing with reduced motion, retained featured work/details, and no runtime errors.
+- Existing ten regression suites passed after updating expected default-theme behavior and release version. Body, secondary, and link contrast ratios against representative palette surfaces measured 9.70, 4.78, and 6.68 respectively; this is not a full accessibility audit of every gradient state.

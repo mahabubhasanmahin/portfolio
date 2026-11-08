@@ -102,4 +102,10 @@ The compact mobile menu is in `js/navigation.js`. Home and featured styles are i
 
 The portrait loads directly from the initial HTML, including when JavaScript is off. The website does not require HEAD requests before showing images or starting the controls. Missing project/certificate images use their normal error fallbacks. Existing uploaded image paths are stored in each record’s `image` field.
 
-To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r2`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
+To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r3`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
+
+## Pale cyan background and profile images
+
+`css/cyan-theme.css` defines the owner's pale blue/cyan reference palette. It is the new default theme; the dark theme remains available. The choice is saved under `mahin-theme-cyan` so previous default-dark state does not hide this new palette on first use. Text and card colors are adjusted together for readability.
+
+The hero portrait and menu avatar both use the original `assets/images/profile.png`, with CSS framing only. Replace that file to update both. `js/profile.js` handles direct loading and separate fallbacks for each image. The seven home/project/menu/motion features remain in place.
