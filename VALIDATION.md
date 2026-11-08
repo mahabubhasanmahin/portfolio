@@ -53,3 +53,13 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Test harness corrections: waited for the asynchronous media-query change event before checking reduced-motion state, and used an absolute request URL for the PDF assertion. Reruns passed.
 - Desktop rendering was visually inspected after effects settled. Profile/certificate images shown inline in chat are not available as local image files; no generated or substitute person was used. The profile placeholder remains until `assets/images/profile.jpg` is supplied as a file.
 - Repeat effects checks with the README's Playwright setup: `TEST_URL=http://127.0.0.1:8000 node tests/effects.cjs` (set NODE_PATH/CHROMIUM_PATH as needed).
+
+## Professional layout and source alignment
+
+- Latest owner request supersedes the earlier removal of project repository links. All eleven projects from the supplied JavaScript are represented, with exact source URLs and the four supplied live-demo URLs. No demos were invented for desktop/CLI projects.
+- Read-only Git verification succeeded for all eleven repository roots. Live service availability and the BFS subdirectory were not independently checked.
+- Extracted three actual screenshot assets from literal data URLs in the supplied JavaScript, without executing the uploaded code. Optimized the large face-age screenshot as WebP. All three decode successfully in Chromium.
+- Language selection now lives in the sidebar (beside the brand on mobile). Added refined navy/indigo/cyan styling, compact sidebar spacing, screenshot rendering, and paired demo/GitHub actions.
+- Project-specific tests passed for all exact source/demo URLs, missing-demo absence, sidebar language control, screenshot decoding, and initial shared education anchor positioning.
+- Smoke, language, and effects suites passed after the project list and styling updates. Desktop project cards and mobile overview were visually inspected.
+- The portrait is still an initials placeholder. The inline chat photo was visually available but had no downloadable local asset/file ID; a real JPG/PNG attachment is needed to populate the configured portrait path.

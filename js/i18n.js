@@ -1,5 +1,10 @@
 // Each row is [English, বাংলা, 日本語]. Brand names and technology names stay unchanged.
 const rows = [
+['DEVELOPER IN PROGRESS','শেখার পথে একজন ডেভেলপার','成長中の開発者'],
+['Source code ↗','সোর্স কোড ↗','ソースコード ↗'],['Project screenshot','প্রজেক্টের স্ক্রিনশট','プロジェクトのスクリーンショット'],
+['Explore the source code, or try a live demo where available.','সোর্স কোড দেখুন, অথবা যেখানে আছে সেখানে লাইভ ডেমো ব্যবহার করুন।','ソースコードを確認し、公開されているライブデモを試せます。'],
+['A machine learning project that recommends crops using soil and environmental data.','মাটি ও পরিবেশের তথ্য ব্যবহার করে উপযুক্ত ফসল সুপারিশের মেশিন লার্নিং প্রজেক্ট।','土壌と環境のデータを使って作物を提案する機械学習プロジェクト。'],
+['A digital communication simulator for exploring line coding, signal transmission, and error behavior.','লাইন কোডিং, সিগন্যাল ট্রান্সমিশন ও ত্রুটির আচরণ বোঝার ডিজিটাল কমিউনিকেশন সিমুলেটর।','ライン符号化、信号伝送、誤りの挙動を学ぶデジタル通信シミュレーター。'],
 ['Skip to content','মূল কনটেন্টে যান','本文へ移動'],['DEVELOPER PORTFOLIO','ডেভেলপার পোর্টফোলিও','開発者ポートフォリオ'],['WORKSPACE','কর্মক্ষেত্র','ワークスペース'],
 ['Overview','সংক্ষিপ্ত পরিচিতি','概要'],['About me','আমার সম্পর্কে','自己紹介'],['Technical skills','প্রযুক্তিগত দক্ষতা','技術スキル'],['Projects','প্রজেক্ট','プロジェクト'],['Problem solving','সমস্যা সমাধান','問題解決'],['Education','শিক্ষা','学歴'],['Certifications','প্রশিক্ষণ ও সনদ','研修・資格'],['Resume','জীবনবৃত্তান্ত','履歴書'],['Contact','যোগাযোগ','連絡先'],['Portfolio','পোর্টফোলিও','ポートフォリオ'],
 ['Always learning. Always building.','শিখছি প্রতিদিন। গড়ছি নতুন কিছু।','学び続け、作り続ける。'],['Explore my GitHub ↗','আমার GitHub দেখুন ↗','GitHubを見る ↗'],['Built with curiosity & a little caffeine.','কৌতূহল আর একটুখানি কফিতে তৈরি।','好奇心と少しのカフェインで制作。'],['Let’s connect ↗','যোগাযোগ করুন ↗','お話ししましょう ↗'],['Narayanganj, BD','নারায়ণগঞ্জ, বাংলাদেশ','ナラヤンガンジ、バングラデシュ'],['THE DEVELOPER JOURNEY','ডেভেলপার হওয়ার যাত্রা','開発者への道のり'],['Hello, world. I’m','হ্যালো, বিশ্ব। আমি','こんにちは。私は'],

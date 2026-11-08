@@ -11,16 +11,30 @@ for(const [name,url] of Object.entries(data.socials)){$('#contact-socials').appe
 $('#sidebar-github').href=data.socials.GitHub;$('#codeforces').href=data.socials.Codeforces;
 for(const [title,...skills] of data.skills){const card=element('article','skill-card');card.append(element('h3','',title));const tags=element('div','tags');skills.forEach(x=>tags.append(element('span','',x)));card.append(tags);$('#skills-grid').append(card);}
 for(const [target,rows] of [['#education-list',data.education],['#certification-list',data.certifications]])for(const [date,title,org] of rows){const a=element('article');a.append(element('small','',date),element('h3','',title),element('p','',org));$(target).append(a);}
-function renderProjects(category='All projects'){
- const projects=data.projects.filter(x=>category==='All projects'||x.category===category);$('#project-grid').replaceChildren();
- for(const p of projects){const card=element('article','project-card');const art=element('div','project-art');art.setAttribute('aria-hidden','true');art.append(element('span','project-symbol',p.icon),element('span','art-caption','PROJECT EXPLORATION'));const body=element('div','project-body');body.append(element('span','project-category',p.category),element('h3','',p.name),element('p','',p.description));const tags=element('div','tags');p.stack.forEach(s=>tags.append(element('span','',s)));body.append(tags);if(p.demo&&/^https?:\/\//.test(p.demo)){const link=external('Live demo ↗',p.demo);link.className='project-link';body.append(link);}else body.append(element('span','project-link unavailable','Live demo not available'));card.append(art,body);$('#project-grid').append(card);}
+function renderProjects(category='All projects') {
+ const projects=data.projects.filter(project=>category==='All projects'||project.category===category);
+ $('#project-grid').replaceChildren();
+ for(const project of projects){
+  const card=element('article','project-card');
+  const art=element('div','project-art');
+  if(project.image){
+   const image=element('img','project-screenshot');image.src=project.image;image.alt=project.name+' — '+translate('Project screenshot');image.loading='lazy';image.width=900;image.height=440;
+   image.addEventListener('error',()=>{image.remove();art.append(element('span','project-symbol',project.icon));},{once:true});art.append(image);
+  }else{art.setAttribute('aria-hidden','true');art.append(element('span','project-symbol',project.icon),element('span','art-caption','PROJECT EXPLORATION'));}
+  const body=element('div','project-body');body.append(element('span','project-category',project.category),element('h3','',project.name),element('p','',project.description));
+  const tags=element('div','tags');project.stack.forEach(skill=>tags.append(element('span','',skill)));body.append(tags);
+  const actions=element('div','project-actions');
+  if(project.demo&&/^https:\/\//.test(project.demo)){const demo=external('Live demo ↗',project.demo);demo.className='project-link demo-link';actions.append(demo);}
+  if(project.repo&&/^https:\/\/github\.com\//.test(project.repo)){const repo=external('GitHub ↗',project.repo);repo.className='project-link source-link';actions.append(repo);}
+  body.append(actions);card.append(art,body);$('#project-grid').append(card);
+ }
  $('#project-status').textContent=projects.length+' '+translate('projects shown');translatePage($('#project-grid'));
 }
 for(const c of ['All projects',...new Set(data.projects.map(p=>p.category))]){const b=element('button','',c);b.type='button';b.setAttribute('aria-pressed',String(c==='All projects'));b.addEventListener('click',()=>{$('#filters').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderProjects(c);});$('#filters').append(b);}renderProjects();
 // Optional authentic assets are checked before exposing images or download links.
 async function assetExists(path,type){try{const r=await fetch(path,{method:'HEAD'});return r.ok&&(r.headers.get('content-type')||'').includes(type);}catch{return false;}}
 if(await assetExists(data.photo,'image/')){const img=$('#profile');img.onload=()=>{img.hidden=false;$('#portrait-fallback').hidden=true;};img.src=data.photo;}
-for(const cv of data.resumes){const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);if(await assetExists(cv.path,'application/pdf')){const a=element('a','','Download ↓');a.href=cv.path;a.download='';card.append(a);}else card.append(element('span','asset-status','PDF not supplied'));$('#resume-list').append(card);}
+for(const cv of data.resumes){const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);if(await assetExists(cv.path,'application/pdf')){const a=element('a','','Download ↓');a.href=cv.path;a.download='';card.append(a);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions a[href="#resume"]');if(heroCV){heroCV.href=cv.path;heroCV.download='';}}}else card.append(element('span','asset-status','PDF not supplied'));$('#resume-list').append(card);}
 const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme',theme);}catch{}});
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';
@@ -31,3 +45,6 @@ initEffects(data.effects);
 initLanguage();
 setTheme(document.documentElement.dataset.theme);
 document.addEventListener("languagechange",()=>{setTheme(document.documentElement.dataset.theme);const count=$("#project-grid").children.length;$("#project-status").textContent=count+" "+translate("projects shown");const active=document.querySelector(".sidebar nav a.active");if(active)$(".breadcrumb strong").textContent=active.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,"");});
+
+// Honor shared section URLs after dynamic content has finished rendering.
+if(location.hash){const target=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(target)requestAnimationFrame(()=>target.scrollIntoView({behavior:'instant'}));}

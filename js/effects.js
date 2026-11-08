@@ -4,7 +4,7 @@ export function initEffects(config) {
  const fine = matchMedia('(hover: hover) and (pointer: fine)');
  const root = document.documentElement;
  const cards = '.project-card, .skill-card, .quick-card, .resume-card';
- const buttons = '.button, #theme-toggle, .filter-row button, .top-contact';
+ const buttons = '.button, #theme-toggle, .filter-row button, .top-contact, .project-link';
  let scene, frame=0, pending, hovered;
  if(config.background){
   scene=document.createElement('div');scene.className='ambient-scene';scene.setAttribute('aria-hidden','true');
