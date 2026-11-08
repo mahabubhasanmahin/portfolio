@@ -72,3 +72,12 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Preview suite passed: eight screenshot controls, two certificate controls, project/certificate modal open, loaded images, initial focus, Escape dismissal, focus restoration, Bengali close label, mobile overflow, and no runtime errors.
 - Project suite passed with all eight screenshots decoding, source/demo URL matching, sidebar language selector, and initial education hash positioning.
 - Language and effects suites passed again. Initial runs failed because the old local HTTP server stopped responding; starting a new local server resolved the test prerequisite, and the affected checks passed.
+
+## Certificate actions and simple English update
+
+- Replaced duplicate training/image collections with one `certifications` array containing date, title, issuer, and optional image. Certificate rendering is in `js/certificates.js`.
+- Added explicit View certificate and Download certificate actions. The IGPC record has no dead actions while its image is missing. A failed thumbnail hides its actions and shows a short status.
+- Preview now shows loading and failure states, the matching title, a real download link, and accessible close behavior. Certificate numbers and images were not altered; no verification IDs/links were invented.
+- Simplified English navigation, section headings, introduction, about text, project descriptions, skill group labels, CV copy, and contact copy. Official names, course titles, and technology names remain unchanged. Updated Bengali/Japanese translation entries alongside the English changes.
+- Certificate suite passed: three records, two view buttons, two downloads, no actions for missing image, both preview titles/images, Escape/focus restoration, completed real image download with correct filename, Bengali/Japanese controls, simulated failed image message, 320px layout, and no runtime errors.
+- Existing smoke, language, and preview suites passed after the changes. Certificate desktop rendering was visually inspected. `git diff --check` passed.

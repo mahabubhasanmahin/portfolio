@@ -1,3 +1,4 @@
+import {renderCertificates} from './certificates.js';
 import {initImagePreview} from './preview.js';
 import {initEffects} from './effects.js';
 import {initLanguage,translate,translatePage} from './i18n.js';
@@ -11,7 +12,8 @@ $('#email').textContent=data.email+' ↗';$('#email').href='mailto:'+data.email;
 for(const [name,url] of Object.entries(data.socials)){$('#contact-socials').append(external(name+' ↗',url));if(['GitHub','LinkedIn'].includes(name))$('#hero-socials').append(external(name+' ↗',url));}
 $('#sidebar-github').href=data.socials.GitHub;$('#codeforces').href=data.socials.Codeforces;
 for(const [title,...skills] of data.skills){const card=element('article','skill-card');card.append(element('h3','',title));const tags=element('div','tags');skills.forEach(x=>tags.append(element('span','',x)));card.append(tags);$('#skills-grid').append(card);}
-for(const [target,rows] of [['#education-list',data.education],['#certification-list',data.certifications]])for(const [date,title,org] of rows){const a=element('article');a.append(element('small','',date),element('h3','',title),element('p','',org));$(target).append(a);}
+for(const [date,title,org] of data.education){const article=element('article');article.append(element('small','',date),element('h3','',title),element('p','',org));$('#education-list').append(article);}
+renderCertificates(data.certifications,$('#certification-list'));
 function renderProjects(category='All projects') {
  const projects=data.projects.filter(project=>category==='All projects'||project.category===category);
  $('#project-grid').replaceChildren();
@@ -40,12 +42,7 @@ const themeButton=$('#theme-toggle');function setTheme(theme){document.documentE
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){if(data.effects.reveal&&!reduced.matches)entry.target.classList.add('reveal');observer.unobserve(entry.target);}},{threshold:.08});document.querySelectorAll('main>.section,.journey-grid .section').forEach(x=>observer.observe(x));
-const navLinks=[...document.querySelectorAll('.sidebar nav a')];const sectionObserver=new IntersectionObserver(entries=>{const active=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(active){navLinks.forEach(a=>{const selected=a.hash==='#'+active.target.id;a.classList.toggle('active',selected);if(selected)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});$('.breadcrumb strong').textContent=navLinks.find(a=>a.hash==='#'+active.target.id)?.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,'')||'Overview';}},{rootMargin:'-5% 0px -55% 0px',threshold:0});document.querySelectorAll('section[id]').forEach(s=>sectionObserver.observe(s));
-for(const certificate of data.certificateImages||[]){
- const button=element('button','certificate-preview');button.type='button';button.dataset.previewSrc=certificate.image;button.dataset.previewTitle=certificate.title;
- const image=element('img');image.src=certificate.image;image.alt=certificate.title;image.loading='lazy';image.width=800;image.height=560;
- button.append(image,element('span','certificate-caption',certificate.title));$('#certificate-gallery').append(button);
-}
+const navLinks=[...document.querySelectorAll('.sidebar nav a')];const sectionObserver=new IntersectionObserver(entries=>{const active=entries.filter(x=>x.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(active){navLinks.forEach(a=>{const selected=a.hash==='#'+active.target.id;a.classList.toggle('active',selected);if(selected)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});$('.breadcrumb strong').textContent=navLinks.find(a=>a.hash==='#'+active.target.id)?.textContent.trim().replace(/^[⌂◉⌘▦⌨▤◇↓✉]\s*/,'')||translate('Home');}},{rootMargin:'-5% 0px -55% 0px',threshold:0});document.querySelectorAll('section[id]').forEach(s=>sectionObserver.observe(s));
 initImagePreview();
 initEffects(data.effects);
 

@@ -83,6 +83,14 @@ Pointer work uses a single scheduled animation frame only when the mouse moves. 
 
 Eight project screenshots are now stored locally. Five were recovered from the owner's GitHub project repositories; three came from the uploaded JavaScript's embedded image data. Images open in a native accessible dialog with Escape dismissal, focus containment/restoration, and localized controls (`js/preview.js`). Existing source code and live-demo actions remain separate from image previews.
 
-Two certificate images are centralized in `certificateImages` inside `js/portfolio-data.js`: Python/Django from the owner's older website repository, and Cyber Hygiene from the uploaded HTML. These are owner-published assets, not independently verified credentials. Add further authentic certificates to that array only after the image files exist.
+Training details and optional certificate images share the `certifications` array inside `js/portfolio-data.js`. Each record has `date`, `title`, `issuer`, and `image` (a local file path or `null`). The two available images are: Python/Django from the owner's older website repository, and Cyber Hygiene from the uploaded HTML. These are owner-published assets, not independently verified credentials. Add further authentic certificates to that array only after the image files exist.
 
-The specific brick-wall portrait, IGPC certificate, BFS screenshot, duplicate-finder screenshot, and crop screenshot supplied inline in chat could not be obtained as local files. No alternative portrait was substituted. Upload those files as JPG/PNG attachments or a ZIP, or commit the portrait at `assets/images/profile.jpg`. For the remaining project screenshots, store files in `assets/projects/` and set each project's `image` property. Certificate configuration lives in `certificateImages`. New screenshots automatically get the preview control.
+The specific brick-wall portrait, IGPC certificate, BFS screenshot, duplicate-finder screenshot, and crop screenshot supplied inline in chat could not be obtained as local files. No alternative portrait was substituted. Upload those files as JPG/PNG attachments or a ZIP, or commit the portrait at `assets/images/profile.jpg`. For the remaining project screenshots, store files in `assets/projects/` and set each project's `image` property. Certificate configuration lives in `certifications`. New screenshots automatically get the preview control.
+
+## Simple English and certificate actions
+
+The English copy uses short sentences and common words. Official course titles and technology names stay unchanged. Keep translation rows in `js/i18n.js` in sync when editing visible copy.
+
+`js/certificates.js` renders one card per training record. Available images have explicit **View certificate** and **Download certificate** actions. Missing images show a short status without dead links. Add the IGPC certificate path to its existing record when the authentic file is uploaded. Do not add invented certificate IDs or verification links.
+
+`js/preview.js` handles preview loading, readable error messages, downloads, Escape dismissal, and focus restoration. Use `tests/certificates.cjs` to check real image download, localized controls, failure handling, and small-screen layout.
