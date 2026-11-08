@@ -1,17 +1,21 @@
-/* Real coding photograph from the owner's older portfolio, stored locally. */
-html[data-theme=light]{--bg:#eef0ee;--panel:#f5f7f6;--panel2:#e8ecea;--line:#b3bfbe}
-html[data-theme=light] body{background:#eef0ee;background-attachment:scroll}
-body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background:url('../assets/images/coding-background.webp') center/cover no-repeat;filter:grayscale(.65);opacity:.24}
-html[data-theme=dark] body{background:#10151a}
-html[data-theme=dark] body::before{opacity:.18;filter:grayscale(.45)}
-.ambient-orb,.ambient-grid{display:none}
-html[data-theme=light] .hero{background:linear-gradient(90deg,#f1f3f1a8,#f1f3f144)}
-html[data-theme=light] .sidebar{background:#eff3f1f0;border-color:#acbab9}
-html[data-theme=light] .topbar{background:#f6f8f5c9;border-color:#afbfbe}
-html[data-theme=light] :is(.quick-card,.project-card,.certificate-card){background:linear-gradient(135deg,#fafcfaf0,#edf1eff0);border-color:#b1bfbe}
-html[data-theme=light] .featured-card{background:linear-gradient(135deg,#ffffffed,#edf2f4ef)}
-html[data-theme=light] #about,html[data-theme=light] #skills,html[data-theme=light] #education,html[data-theme=light] #certifications,html[data-theme=light] #resume{background:#f4f7f3ed}
-html[data-theme=light] .contact-panel{background:#f2f5f2eb}
-html[data-theme=light] .skill-card,html[data-theme=light] .resume-card{background:#fafbf9dc}
-html[data-theme=light] .geometry{border-color:#46615925}
-@media(max-width:760px){body::before{background-position:60% center;opacity:.17}html[data-theme=light] .sidebar{background:#f0f4f1f7}html[data-theme=light] .hero{background:#f1f3f155}}
+/* Blue base with three locally stored coding/CSE photographs. */
+html[data-theme=light]{--bg:#bad6e5;--panel:#edf5fa;--panel2:#dcebf5;--line:#a0bacd}
+html[data-theme=light] body{background:radial-gradient(ellipse at 85% 5%,#d5eaf0,transparent 55%),linear-gradient(135deg,#acc9df,#c6e0e9 55%,#b6d1e6);background-attachment:scroll}
+body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;background:none;opacity:1}
+html[data-theme=dark] body{background:radial-gradient(ellipse at top right,#15365a,transparent 65%),#0a172a}
+.background-photo{position:absolute;pointer-events:none;background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:28px;border:1px solid #5e89ba55;box-shadow:0 18px 60px #1c467922;opacity:.2;filter:saturate(.6);mask-image:radial-gradient(ellipse at center,#000 30%,#000b 55%,transparent 78%);transform:translate3d(var(--scene-x,0px),calc(var(--scene-y,0px) + var(--scroll-offset,0px)),0) rotate(var(--photo-angle,0deg))}
+.photo-code{background-image:url('../assets/images/code-pattern.webp');width:52vw;height:48vh;right:-8vw;top:-8vh;--photo-angle:-12deg}
+.photo-workstation{background-image:url('../assets/images/coding-background.webp');width:45vw;height:51vh;right:-8vw;bottom:-8vh;--photo-angle:10deg}
+.photo-network{background-image:url('../assets/images/network-background.webp');width:45vw;height:50vh;left:5vw;bottom:-13vh;--photo-angle:-9deg;opacity:.15}
+html[data-theme=dark] .background-photo{opacity:.15;filter:saturate(.8)}
+.ambient-orb{display:block;opacity:.35}.ambient-grid{display:block;opacity:.4}
+html[data-theme=light] .hero{background:linear-gradient(90deg,#c4dceaa8,#c4dcea22)}
+html[data-theme=light] .sidebar{background:linear-gradient(180deg,#d3e5f1f5,#bfd9eaf5);border-color:#94b3cb}
+html[data-theme=light] .topbar{background:#d9eaf3bd;border-color:#9fb9ce}
+html[data-theme=light] :is(.quick-card,.project-card,.certificate-card){background:linear-gradient(135deg,#f3f8fdf0,#e3eef8f0);border-color:#9db8d2}
+html[data-theme=light] .featured-card{background:linear-gradient(135deg,#f7fafff5,#deebfaf0)}
+html[data-theme=light] #about{background:#e8f5f6ed}html[data-theme=light] #skills{background:#e9eef9ed}html[data-theme=light] #education{background:#e6f0f9ed}html[data-theme=light] #certifications{background:#e8f4f2ed}html[data-theme=light] #resume{background:#edf0faed}
+html[data-theme=light] .contact-panel{background:radial-gradient(ellipse at bottom,#b4bde744,transparent 75%),#e5f0f8eb}
+html[data-theme=light] .skill-card,html[data-theme=light] .resume-card{background:#f2f8fddc}
+html[data-theme=light] .geometry{border-color:#3d6e9d25}
+@media(max-width:760px){.photo-code{width:95vw;height:35vh;right:-35vw;top:6vh;opacity:.14}.photo-workstation{width:90vw;height:38vh;right:-30vw;bottom:0;opacity:.12}.photo-network{display:none}.ambient-grid{display:none}html[data-theme=light] .sidebar{background:#cce1f0f7}html[data-theme=light] .hero{background:#c4dcea55}}

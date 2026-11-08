@@ -1,10 +1,10 @@
-import {initProfile} from './profile.js?v=20261108-r5';
-import {initNavigation} from './navigation.js?v=20261108-r5';
-import {renderCertificates} from './certificates.js?v=20261108-r5';
-import {initImagePreview} from './preview.js?v=20261108-r5';
-import {initEffects} from './effects.js?v=20261108-r5';
-import {initLanguage,translate,translatePage} from './i18n.js?v=20261108-r5';
-import {portfolio as data} from './portfolio-data.js?v=20261108-r5';
+import {initProfile} from './profile.js?v=20261108-r6';
+import {initNavigation} from './navigation.js?v=20261108-r6';
+import {renderCertificates} from './certificates.js?v=20261108-r6';
+import {initImagePreview} from './preview.js?v=20261108-r6';
+import {initEffects} from './effects.js?v=20261108-r6';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261108-r6';
+import {portfolio as data} from './portfolio-data.js?v=20261108-r6';
 initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};

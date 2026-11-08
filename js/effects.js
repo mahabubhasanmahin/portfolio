@@ -8,7 +8,7 @@ export function initEffects(config) {
  let scene, frame=0, scrollFrame=0, pending, hovered;
  if(config.background){
   scene=document.createElement('div');scene.className='ambient-scene';scene.setAttribute('aria-hidden','true');
-  for(const className of ['ambient-grid','ambient-orb orb-blue','ambient-orb orb-cyan','geometry geometry-cube','geometry geometry-ring','geometry geometry-diamond']){
+  for(const className of ['background-photo photo-code','background-photo photo-workstation','background-photo photo-network','ambient-grid','ambient-orb orb-blue','ambient-orb orb-cyan','geometry geometry-cube','geometry geometry-ring','geometry geometry-diamond']){
    const shape=document.createElement('div');shape.className=className;scene.append(shape);
   }
   document.body.prepend(scene);

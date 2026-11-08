@@ -141,3 +141,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Replaced the blue/cyan page background with a locally stored coding/CSE photograph recovered from the owner's older website repository, optimized as WebP. Neutral overlays/surfaces keep text readable; separate light/dark opacity settings and a lighter mobile layer avoid blocking controls or scroll.
 - Removed blue grid/orb background layers while retaining button accents, hover feedback, and existing features. Source photo is decorative; it does not claim authorship of the code shown in it.
 - Confirmed the image serves successfully and is applied by the browser. Light/dark image/layout checks and stronger-hover suite passed. Desktop rendering was visually inspected. Release: 20261108-r5.
+
+## Blue multi-image CSE background
+
+- Clarified owner preference: restored the blue background and combined three distinct local coding/CSE photographs (code close-up, coding workstation, and code/server imagery). Sources are the owner's older public portfolio assets, optimized as WebP.
+- Applied soft masked layers, low opacity, and blue overlays with a clear reading area. Desktop shows three image layers; mobile keeps two. All layers are decorative and ignore pointer events.
+- Browser checks confirmed all three image files serve and the three photo layers render. Light/dark layout/portrait checks and effects suite passed, including mobile overflow and reduced-motion behavior. Desktop composition was visually inspected. Release: 20261108-r6.
