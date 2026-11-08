@@ -15,9 +15,10 @@ For a local VS Code checkout, open the project directory and run `python3 -m htt
 
 ## Edit content and design
 
-- `js/portfolio-data.js`: personal details, introduction, about copy, links, projects, skill groups, education, training, asset paths, and effects options. Projects are rendered automatically; add/remove an object to change the collection. `repo` is a path relative to the GitHub profile; use `null` when unknown. Never invent demo links or statistics.
+- `js/portfolio-data.js`: personal details, introduction, about copy, links, projects, skill groups, education, training, asset paths, and effects options. Projects are rendered automatically; add/remove an object to change the collection. `demo` is a complete verified HTTPS live-demo URL; leave it `null` when unknown. Project cards show live demos only, without GitHub repository links. Never invent demo links or statistics.
 - `css/style.css`: change `:root` design tokens for dark colors, light-theme overrides, typography, layouts, breakpoints, and animation styles.
 - `index.html`: layout and section ordering, headings, semantic structure, page title, description, and Open Graph metadata. When adding sections, add an ID and matching sidebar link.
+- `js/i18n.js`: English, Bengali, and Japanese translation rows. Add a row for new visible text; keep technology and project brand names unchanged. Language choice persists locally.
 - `js/main.js`: rendering, project filtering, theme persistence, active navigation, asset checks, reveal and tilt behavior.
 - Disable reveal/tilt or change `tiltDegrees` in `portfolio-data.js`. Both effects respect reduced-motion preferences; tilt runs only for mouse input.
 
@@ -57,3 +58,7 @@ git push origin HEAD:main
 Do not push or replace an existing production site without owner approval. Subsequent approved pushes trigger deployments when Git integration is enabled. To roll back, promote a previous known-good deployment in the provider dashboard, or create a revert commit and push it after review. Never rewrite shared Git history as a rollback shortcut.
 
 Browser smoke checks are preserved in `tests/smoke.cjs`; see `VALIDATION.md` for the optional external test-tool installation and commands. These tools are not runtime dependencies.
+
+## Readability and languages
+
+The header language selector supports English, বাংলা, and 日本語, updates the document language, and remembers the choice. Technology and project names retain their original spelling. Body content is at least 15–16px with stronger secondary-text contrast. Review Bengali/Japanese translations before publication for your preferred wording. Live URLs could not be recovered from the old portfolio because access returned 403. Supply verified URLs in each project’s `demo` property.

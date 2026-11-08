@@ -34,3 +34,12 @@ NODE_PATH=/tmp/portfolio-test-tools/node_modules CHROMIUM_PATH=/usr/bin/chromium
 ```
 
 Use a trusted installed Chromium executable. The smoke test currently asserts missing-asset states; update those assertions once real assets are added. It exercises the current app without altering production files.
+
+## Readability and localization update
+
+- Increased main body copy to 15–16px, project titles to 19px, navigation to 13–14px, and strengthened secondary-text contrast in both themes.
+- Added English, Bengali (`bn`), and Japanese (`ja`) UI/content translation and persistent language selection. Technology names and project brand names remain unchanged.
+- Language checks passed: content changes, document language, persisted selection, localized filtering, no project GitHub links, theme switching, and no runtime errors. No horizontal overflow at 1440, 768, 390, or 320px in all three languages (12 checks).
+- The existing smoke suite passed again after the changes. Tests are in `tests/languages.cjs` and `tests/smoke.cjs`; set `TEST_URL` to override the local test server URL.
+- Project repository links were removed from cards. Live demos use a configurable `demo` URL; all currently remain null because the old portfolio request returned HTTP 403. Demo URL extraction and actual live-demo navigation remain blocked until source access or owner-supplied URLs are available.
+- Bengali desktop rendering was visually inspected; translation wording has not been professionally reviewed.
