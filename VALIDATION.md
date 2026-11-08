@@ -160,3 +160,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Fast-forwarded the owner's newly uploaded 300×300 RGBA profile.png. The previous 160% hero zoom and 220% menu-avatar zoom were designed for the old full-body photo and clipped the replacement headshot.
 - Removed enlarged dimensions and negative offsets from both image placements, switched to contain fitting, used a square hero frame, and updated intrinsic HTML dimensions. Source image pixels were preserved.
 - Light/dark portrait/layout suite passed, including reduced-motion containment. Hero badge bounds/overflow passed across six widths and three languages. Deployment/image-fallback suite passed. Desktop rendering was visually inspected with the full head and shoulders visible. Release: 20261108-r8.
+
+## Automatic framing for restored portrait
+
+- Pulled the owner's restored 900×1600 profile.png. Added natural-dimension detection to the direct image loader: tall uploads use portrait cover framing and a matching avatar crop, while square/wider uploads use containment without the old tall-photo zoom. Intrinsic dimensions update after decoding.
+- Added narrow-screen width/grid constraints; no horizontal overflow at 320, 390, 594, 760, 1024, or 1440px in the framing test. Portrait badge bounds also passed across the existing six widths and three languages.
+- Profile-framing tests passed with the real tall photo and a browser-only square fixture. Light/dark portrait/layout and hero-layout suites passed. Release: 20261108-r9.

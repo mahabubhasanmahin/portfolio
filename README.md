@@ -102,7 +102,7 @@ The compact mobile menu is in `js/navigation.js`. Home and featured styles are i
 
 The portrait loads directly from the initial HTML, including when JavaScript is off. The website does not require HEAD requests before showing images or starting the controls. Missing project/certificate images use their normal error fallbacks. Existing uploaded image paths are stored in each record’s `image` field.
 
-To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r8`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
+To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r9`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
 
 ## Pale cyan background and profile images
 
@@ -118,4 +118,4 @@ The three local photographs are `coding-background.webp`, `code-pattern.webp`, a
 
 The Home section keeps an opaque reading gradient on the left and the photo collage toward the right. Portrait badges use unrotated, bounded positions to avoid clipping at narrow widths and in translated layouts.
 
-The current 300×300 transparent headshot uses `object-fit: contain` in a square hero frame and in the menu avatar. Old full-body zoom/offset rules were removed, so the whole head and shoulders remain visible.
+Profile framing follows the uploaded file’s real dimensions. Tall photos use a 4:5 hero frame with cover fitting and a separate menu-avatar crop. Square or wider photos use contain fitting with no portrait zoom. The original 900×1600 photo is currently uploaded. Replace `assets/images/profile.png` to update both images; no manual crop-mode change is required.
