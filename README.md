@@ -8,10 +8,10 @@ Built with HTML, CSS, and JavaScript. No build step, framework, or backend is ne
 
 ## Included
 
-- Eleven class and personal projects, with three featured projects.
+- Eleven class and personal projects, shown together in one grid.
 - Project screenshots, source links, four supplied demo links, and editable project notes.
 - Skills, education, three certificates, CV preview and download, and contact links.
-- Midnight Glass design, light theme, and English, Bengali, and Japanese.
+- Charcoal and Emerald Glass design, light theme, and English, Bengali, and Japanese.
 - Mobile menu, keyboard navigation, image previews, and optional motion effects.
 
 ## Run locally
@@ -40,7 +40,7 @@ Open `http://localhost:8000`. VS Code Live Server also works. Use a server rathe
 
 **Photo:** replace `assets/images/profile.png` with a real PNG. The hero and menu share it. Square headshots show the whole image; tall photos use cover fitting. Keep the face inside the photo. The transparent portrait has no colored box, border, or glow. The page background shows through in either theme; the shirt edge fades softly into it. To use another filename, change `photo` in the data file and both initial image sources in `index.html`. Renaming a JPG extension does not convert it to PNG.
 
-**Projects:** add an object to `projects`. Use `featured: true` for the first group, and `demo: null` when there is no live site. Upload a screenshot and put its relative path in `image`. Each project has editable `description`, `work`, `learning`, `stack`, and `repo`. The current work notes describe features; they do not establish individual or team roles. Replace them with your specific contribution when confirmed.
+**Projects:** add an object to `projects`. All cards appear together in the order listed. Use `demo: null` when there is no live site. Upload a screenshot and put its relative path in `image`. Each project has editable `description`, `work`, `learning`, `stack`, and `repo`. The current work notes describe features; they do not establish individual or team roles. Replace them with your specific contribution when confirmed.
 
 **Skills and research:** edit the skill groups honestly. Keep basic and project-based labels where appropriate. `currentFocus` records work on a research paper; no publication or result is claimed.
 

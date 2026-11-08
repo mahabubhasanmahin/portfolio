@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-portrait-blend';
+import {translate} from './i18n.js?v=20261109-emerald-grid';
 
 /** A real PDF preview with a normal open/download fallback for mobile browsers. */
 export function initCVPreview(){

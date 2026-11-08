@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-portrait-blend';
+import {translate} from './i18n.js?v=20261109-emerald-grid';
 
 /** One active-section controller for pointer, keyboard, scroll, and history. */
 export function initNavigation(){

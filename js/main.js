@@ -1,11 +1,11 @@
-import {initCVPreview} from './cv.js?v=20261109-portrait-blend';
-import {initProfile} from './profile.js?v=20261109-portrait-blend';
-import {initNavigation} from './navigation.js?v=20261109-portrait-blend';
-import {renderCertificates} from './certificates.js?v=20261109-portrait-blend';
-import {initImagePreview} from './preview.js?v=20261109-portrait-blend';
-import {initEffects} from './effects.js?v=20261109-portrait-blend';
-import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-portrait-blend';
-import {portfolio as data} from './portfolio-data.js?v=20261109-portrait-blend';
+import {initCVPreview} from './cv.js?v=20261109-emerald-grid';
+import {initProfile} from './profile.js?v=20261109-emerald-grid';
+import {initNavigation} from './navigation.js?v=20261109-emerald-grid';
+import {renderCertificates} from './certificates.js?v=20261109-emerald-grid';
+import {initImagePreview} from './preview.js?v=20261109-emerald-grid';
+import {initEffects} from './effects.js?v=20261109-emerald-grid';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-emerald-grid';
+import {portfolio as data} from './portfolio-data.js?v=20261109-emerald-grid';
 initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -19,12 +19,10 @@ for(const [title,...skills] of data.skills){const card=element('article','skill-
 for(const [date,title,org] of data.education){const article=element('article');article.append(element('small','',date),element('h3','',title),element('p','',org));$('#education-list').append(article);}
 renderCertificates(data.certifications,$('#certification-list'));
 function renderProjects(category='All projects') {
- const projects=data.projects.filter(project=>category==='All projects'||project.category===category).sort((a,b)=>Number(Boolean(b.featured))-Number(Boolean(a.featured)));
- let normalHeading=false;
+ const projects=data.projects.filter(project=>category==='All projects'||project.category===category);
  $('#project-grid').replaceChildren();
  for(const project of projects){
-  if(category==='All projects'){if(project===projects[0])$('#project-grid').append(element('p','project-group-title','Featured projects'));if(!project.featured&&!normalHeading){$('#project-grid').append(element('p','project-group-title','More projects'));normalHeading=true;}}
-  const card=element('article','project-card'+(project.featured?' featured-card':''));card.style.setProperty('--stagger',Math.min(projects.indexOf(project),5)*35+'ms');
+  const card=element('article','project-card');card.style.setProperty('--stagger',Math.min(projects.indexOf(project),5)*35+'ms');
   const art=element('div','project-art');
   if(project.image){
    const image=element('img','project-screenshot');image.src=project.image;image.alt=project.name+' — Project screenshot';image.loading='lazy';image.width=900;image.height=440;
@@ -49,7 +47,7 @@ for(const cv of data.resumes){
  if(cv.path){const actions=element('div','resume-actions');const download=card.querySelector('a[download]');const preview=element('button','cv-preview','View CV');preview.type='button';preview.dataset.cvSrc=cv.path;preview.setAttribute('aria-haspopup','dialog');actions.append(preview,download);card.append(actions);}
  $('#resume-list').append(card);
 }
-const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#080f1f':'#edf3fa';themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme-midnight')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme-midnight',theme);}catch{}});
+const themeButton=$('#theme-toggle');function setTheme(theme){document.documentElement.dataset.theme=theme;document.querySelector('meta[name="theme-color"]').content=theme==='dark'?'#101715':'#f1f6f3';themeButton.textContent=theme==='dark'?'☼':'☾';themeButton.setAttribute('aria-label',translate('Switch to '+(theme==='dark'?'light':'dark')+' theme'));}try{setTheme(localStorage.getItem('mahin-theme-midnight')==='light'?'light':'dark');}catch{setTheme('dark');}themeButton.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';setTheme(theme);try{localStorage.setItem('mahin-theme-midnight',theme);}catch{}});
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 if(!['reveal','tilt','spotlight','buttons','background'].some(key=>data.effects[key]))document.documentElement.dataset.effects='off';
 const observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){if(data.effects.reveal&&!reduced.matches)entry.target.classList.add('section-arrived');observer.unobserve(entry.target);}},{threshold:.08});document.querySelectorAll('main>.section,.journey-grid .section').forEach(x=>observer.observe(x));

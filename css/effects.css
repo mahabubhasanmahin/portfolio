@@ -1,12 +1,12 @@
 /* Lightweight enhancement layer. Content is readable without these effects. */
 .ambient-scene { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; contain: strict; --scene-x: 0px; --scene-y: 0px; }
-.ambient-grid { position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(#5d85ad14 1px,transparent 1px),linear-gradient(90deg,#5d85ad14 1px,transparent 1px); background-size: 65px 65px; mask-image: radial-gradient(ellipse at 70% 35%,#000,transparent 75%); }
+.ambient-grid { position: absolute; inset: 0; opacity: .22; background-image: linear-gradient(#6a9a7e14 1px,transparent 1px),linear-gradient(90deg,#6a9a7e14 1px,transparent 1px); background-size: 65px 65px; mask-image: radial-gradient(ellipse at 70% 35%,#000,transparent 75%); }
 .ambient-orb { position: absolute; border-radius: 50%; width: 650px; height: 650px; transform: translate3d(var(--scene-x),calc(var(--scene-y) + var(--scroll-offset,0px)),0); }
-.orb-blue { top: -270px; right: -150px; background: radial-gradient(circle,#2563eb19,transparent 67%); }.orb-cyan { bottom: -420px; left: 5%; background: radial-gradient(circle,#22d3ee0a,transparent 65%); }
-.geometry { position: absolute; border: 1px solid #6aa3dc14; transform: translate3d(var(--scene-x),var(--scene-y),0) rotate(25deg); }
+.orb-blue { top: -270px; right: -150px; background: radial-gradient(circle,#10b98119,transparent 67%); }.orb-cyan { bottom: -420px; left: 5%; background: radial-gradient(circle,#6ee7b70a,transparent 65%); }
+.geometry { position: absolute; border: 1px solid #75b38d14; transform: translate3d(var(--scene-x),var(--scene-y),0) rotate(25deg); }
 .geometry-cube { top: 21%; right: 4%; width: 125px; height: 125px; border-radius: 16px; }.geometry-ring { right: 17%; bottom: 13%; width: 175px; height: 175px; border-radius: 50%; }.geometry-diamond { display: none; }
 :is(.project-card,.skill-card,.quick-card,.resume-card,.certificate-card) { position: relative; isolation: isolate; transition: transform var(--motion),border-color var(--motion),box-shadow var(--motion),background var(--motion); }
-:is(.project-card,.skill-card,.quick-card,.resume-card,.certificate-card):after { content: ''; position: absolute; z-index: -1; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none; background: radial-gradient(300px circle at var(--pointer-x,50%) var(--pointer-y,50%),#3f9eff14,transparent 70%); transition: opacity var(--motion); }
+:is(.project-card,.skill-card,.quick-card,.resume-card,.certificate-card):after { content: ''; position: absolute; z-index: -1; inset: 0; border-radius: inherit; opacity: 0; pointer-events: none; background: radial-gradient(300px circle at var(--pointer-x,50%) var(--pointer-y,50%),#38d99714,transparent 70%); transition: opacity var(--motion); }
 html[data-pointer-effects=true] .pointer-lit:after { opacity: 1; }
 :is(.button,.project-link,.certificate-preview,.certificate-download,.preview-download,.cv-preview,.cv-open,.top-contact,.filter-row button,#theme-toggle,.menu-toggle) { position: relative; isolation: isolate; overflow: hidden; transition: transform var(--motion),border-color var(--motion),box-shadow var(--motion),background var(--motion); }
 .button:before { content: ''; position: absolute; top: -50%; left: -80%; width: 40%; height: 200%; pointer-events: none; transform: skewX(-20deg); background: linear-gradient(90deg,transparent,#ffffff24,transparent); }
@@ -14,13 +14,13 @@ html[data-pointer-effects=true] .pointer-lit:after { opacity: 1; }
  :is(.project-card,.skill-card,.quick-card,.resume-card,.certificate-card):hover { border-color: var(--hover-border); box-shadow: 0 15px 32px var(--hover-shadow); transform: translateY(-5px); }
  html[data-pointer-effects=true] .project-card.pointer-lit { border-color: var(--hover-border); box-shadow: 0 15px 32px var(--hover-shadow); transform: perspective(1000px) translateY(-5px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)); }
  :is(.button,.project-link,.certificate-preview,.certificate-download,.top-contact,.filter-row button,#theme-toggle,.menu-toggle,.cv-preview,.cv-open):hover { border-color: var(--hover-border); box-shadow: 0 6px 20px var(--hover-shadow); transform: translateY(-2px); }
- .primary:hover { background: #3472f3; color: #fff; }.secondary:hover { background: var(--surface-raised); }
+ .primary:hover { background: #065f46; color: #fff; }.secondary:hover { background: var(--surface-raised); }
  html[data-button-effects=true] .button:hover:before { animation: sheen .6s ease both; }
  .project-card:hover .project-screenshot { transform: scale(1.035); }
 }
-:is(.project-card,.certificate-card,.resume-card):focus-within { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(34,211,238,.12); }
+:is(.project-card,.certificate-card,.resume-card):focus-within { border-color: var(--cyan); box-shadow: 0 0 0 2px rgba(110,231,183,.12); }
 :is(.button,.project-link,.certificate-preview,.certificate-download):active { transform: translateY(1px); }
-.button-ripple { position: absolute; width: 12px; height: 12px; border-radius: 50%; pointer-events: none; background: #a9e6ff70; transform: translate(-50%,-50%) scale(0); animation: ripple .5s ease-out forwards; z-index: -1; }
+.button-ripple { position: absolute; width: 12px; height: 12px; border-radius: 50%; pointer-events: none; background: #b8f3d470; transform: translate(-50%,-50%) scale(0); animation: ripple .5s ease-out forwards; z-index: -1; }
 @keyframes sheen { to { left: 150%; } }@keyframes ripple { to { transform: translate(-50%,-50%) scale(35); opacity: 0; } }
 .section-arrived { animation: section-reveal .65s ease both; }.section-arrived .project-card { animation: card-reveal .5s ease both; animation-delay: var(--stagger,0ms); }
 @keyframes section-reveal { from { opacity: .75; } to { opacity: 1; } }@keyframes card-reveal { from { opacity: .72; } to { opacity: 1; } }

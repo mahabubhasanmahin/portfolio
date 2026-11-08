@@ -1,4 +1,16 @@
-# Portfolio audit — Midnight Glass
+# Portfolio audit and follow-up changes
+
+## Follow-up — 9 November 2026 (Dhaka)
+
+The owner requested one project grid and an alternative to blue. All eleven projects now appear together, in their existing data order, with equal screenshot heights. The Featured/More headings and larger featured-card treatment were removed from rendering; original project metadata and links remain intact.
+
+The current theme uses charcoal (`#101715`), emerald (`#047857`), and mint (`#6EE7B7`) with a matching light mode. The profile remains transparent, with no colored frame, border, or glow, and blends into either theme. Existing smooth transitions, pointer tilt, hover, and reduced-motion support remain. Favicon and social-card artwork match the new palette.
+
+Six affected browser suites passed: projects, home, themes, hero layout, hover feedback, and navigation/CV integration. Rechecked automated accessibility in both themes after increasing the light-mode text contrast. The Lighthouse scores below belong to the earlier Midnight Glass audit; Lighthouse was not rerun for this color/layout follow-up.
+
+---
+
+The following records the initial Midnight Glass audit and its limits.
 
 Audit date: 8 November 2026 (UTC). Tested the existing static website at `http://127.0.0.1:8015/portfolio/`, including the GitHub Pages subdirectory. Existing HTML, CSS, JavaScript, assets, content, and tests were inspected before changes. No framework, runtime library, build system, or form backend was added.
 
