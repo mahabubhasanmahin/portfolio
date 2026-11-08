@@ -94,3 +94,5 @@ The English copy uses short sentences and common words. Official course titles a
 `js/certificates.js` renders one card per training record. Available images have explicit **View certificate** and **Download certificate** actions. Missing images show a short status without dead links. Add the IGPC certificate path to its existing record when the authentic file is uploaded. Do not add invented certificate IDs or verification links.
 
 `js/preview.js` handles preview loading, readable error messages, downloads, Escape dismissal, and focus restoration. Use `tests/certificates.cjs` to check real image download, localized controls, failure handling, and small-screen layout.
+
+Education and Certificates are independent sections in `index.html`. Responsive certificate layout is controlled by the final rules in `css/polish.css`: one column on small screens, two on medium screens, and three on large screens. Run `tests/responsive.cjs` with the same optional Playwright setup to verify section order, width, overflow, and touch targets.

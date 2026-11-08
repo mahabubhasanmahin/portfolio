@@ -81,3 +81,10 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Simplified English navigation, section headings, introduction, about text, project descriptions, skill group labels, CV copy, and contact copy. Official names, course titles, and technology names remain unchanged. Updated Bengali/Japanese translation entries alongside the English changes.
 - Certificate suite passed: three records, two view buttons, two downloads, no actions for missing image, both preview titles/images, Escape/focus restoration, completed real image download with correct filename, Bengali/Japanese controls, simulated failed image message, 320px layout, and no runtime errors.
 - Existing smoke, language, and preview suites passed after the changes. Certificate desktop rendering was visually inspected. `git diff --check` passed.
+
+## Separate certificates section and responsive layout
+
+- Education and Certificates are separate, full-width sibling sections, with Certificates immediately after Education.
+- Certificate cards use one column on mobile, two on medium screens, and three on large screens. Education entries stack on small screens. Mobile sidebar navigation scrolls horizontally and certificate controls have at least 44px touch targets.
+- Responsive suite passed at 320, 360, 390, 600, 768, 1024, 1440, and 1920px: no horizontal document overflow, equal section widths, and certificate controls fitting their container with touch target sizing. Bengali/Japanese mobile overflow checks passed.
+- Certificate suite passed again, including actual downloads, preview focus and Escape, translated controls, and image failure handling. These checks cover representative screen sizes, not every physical device/browser.
