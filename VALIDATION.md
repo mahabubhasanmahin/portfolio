@@ -154,3 +154,9 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Removed badge rotation and negative outer offsets; constrained the portrait scene, badges, and availability caption so the Bangladesh label is no longer clipped at the hero edge.
 - New hero-layout suite passed badge bounds and document overflow checks at 320, 390, 768, 1024, 1440, and 1920px in English, Bengali, and Japanese (18 combinations). Home-refresh suite passed again. Desktop result was visually inspected.
 - The owner did not identify a specific screenshot region beyond asking for a fix; these changes address the visible background/text interference and cropped badge, preserving the requested colors, photos, and existing features. Release: 20261108-r7.
+
+## New square headshot framing
+
+- Fast-forwarded the owner's newly uploaded 300×300 RGBA profile.png. The previous 160% hero zoom and 220% menu-avatar zoom were designed for the old full-body photo and clipped the replacement headshot.
+- Removed enlarged dimensions and negative offsets from both image placements, switched to contain fitting, used a square hero frame, and updated intrinsic HTML dimensions. Source image pixels were preserved.
+- Light/dark portrait/layout suite passed, including reduced-motion containment. Hero badge bounds/overflow passed across six widths and three languages. Deployment/image-fallback suite passed. Desktop rendering was visually inspected with the full head and shoulders visible. Release: 20261108-r8.

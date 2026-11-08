@@ -102,7 +102,7 @@ The compact mobile menu is in `js/navigation.js`. Home and featured styles are i
 
 The portrait loads directly from the initial HTML, including when JavaScript is off. The website does not require HEAD requests before showing images or starting the controls. Missing project/certificate images use their normal error fallbacks. Existing uploaded image paths are stored in each record’s `image` field.
 
-To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r7`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
+To make browser caches use a matching set of files after a future release, run `python3 scripts/stamp-release.py YOUR_NEW_RELEASE_ID` before committing. This updates the CSS, main JavaScript, local module imports, and portrait URL together. Keep the generated query versions in place. The current release is `20261108-r8`. `tests/deployment.cjs` checks direct loading, HEAD-denied behavior, JavaScript-off display, and real image-failure fallback; it also runs under `/portfolio/`.
 
 ## Pale cyan background and profile images
 
@@ -117,3 +117,5 @@ Hover feedback is controlled by the final rules in `css/cyan-theme.css`: cards l
 The three local photographs are `coding-background.webp`, `code-pattern.webp`, and `network-background.webp` under `assets/images/`, from the owner’s older portfolio. `css/coding-background.css` positions them over a blue gradient as soft layers. Edit the `.background-photo` opacity and `.photo-*` positions there. Background images never intercept clicks. Mobile shows two layers; motion preferences and existing hover settings are respected.
 
 The Home section keeps an opaque reading gradient on the left and the photo collage toward the right. Portrait badges use unrotated, bounded positions to avoid clipping at narrow widths and in translated layouts.
+
+The current 300×300 transparent headshot uses `object-fit: contain` in a square hero frame and in the menu avatar. Old full-body zoom/offset rules were removed, so the whole head and shoulders remain visible.

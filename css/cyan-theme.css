@@ -1,8 +1,8 @@
 /* The owner's pale blue/cyan reference, with readable navy text. */
 .sidebar-avatar{position:relative;display:block;flex-shrink:0;width:44px;height:48px;border-radius:13px;overflow:hidden;border:2px solid #72bdcf;box-shadow:0 4px 15px #26718e24;background:#c1dde4}
-.sidebar-avatar>img{position:absolute;max-width:none;width:220%;height:220%;left:-65%;top:-35%;object-fit:cover;object-position:52% 20%}.sidebar-avatar .brand-mark{width:100%;height:100%;border-radius:0}
+.sidebar-avatar>img{position:absolute;max-width:100%;width:100%;height:100%;left:0;top:0;object-fit:contain;object-position:center bottom}.sidebar-avatar .brand-mark{width:100%;height:100%;border-radius:0}
 .portrait-frame{position:relative;border-radius:28px;border:2px solid #70bed0;box-shadow:0 0 0 8px #77badc0c,0 20px 60px #123e5c26}
-.portrait-frame img{position:absolute;max-width:none;width:160%;height:160%;left:-32%;top:-18%;object-fit:cover;object-position:50% 25%}
+.portrait-frame img{position:absolute;max-width:100%;width:100%;height:100%;left:0;top:0;object-fit:contain;object-position:center bottom;padding:12px 12px 0}
 .portrait-scene .orbit{opacity:.45}.code-label{left:-2px;top:26px}.location-label{bottom:43px;right:-6px}.scene-caption{bottom:-5px}
 html[data-theme=light]{color-scheme:light;--bg:#bed9e0;--panel:#edf6f8;--panel2:#d9edf1;--text:#102c43;--muted:#3e5c70;--line:#a0c1ce;--blue:#285fbd;--cyan:#086f80;--shadow:0 16px 45px #25586c14}
 html[data-theme=light] body{background:radial-gradient(ellipse at 85% 8%,#e1eff0aa,transparent 45%),linear-gradient(130deg,#b5d1dc 0%,#c9e2e5 55%,#b8d7df 100%);background-attachment:fixed;color:var(--text)}
@@ -29,7 +29,7 @@ html[data-theme=light] .email-link{color:#1e558c}
 html[data-theme=light] .ambient-orb{opacity:.35}html[data-theme=light] .geometry{border-color:#28648927;box-shadow:none}
 html[data-theme=light] .hero-socials,html[data-theme=light] footer,html[data-theme=light] .scene-caption,html[data-theme=light] .contact-location,html[data-theme=light] .contact-hometown{color:#3b5c72}
 @media(max-width:760px){.sidebar-avatar{width:36px;height:40px;border-radius:10px}.brand{gap:8px}.portrait-frame{border-radius:25px}.code-label{left:0;top:15px;font-size:10px}.location-label{right:0;bottom:40px}.scene-caption{font-size:10px;bottom:-2px}html[data-theme=light] .sidebar{background:#c9e1e8f7}}
-@media(prefers-reduced-motion:reduce){.portrait-frame img{width:160%;height:160%;left:-32%;top:-18%}}
+
 
 /* Stronger hover feedback in both themes, without shifting surrounding layout. */
 :root{--hover-lift:-7px;--hover-border:#4d8af0;--hover-ring:#4d8af025;--hover-shadow:#17385930}
@@ -54,3 +54,6 @@ html[data-theme=dark]{--hover-border:#78b8ff;--hover-ring:#53acff26;--hover-shad
  :is(.project-card,.certificate-card,.skill-card,.quick-card,.resume-card,.button,.project-link,.sidebar nav a):hover{transform:none!important;transition:none}
  .project-card:hover .project-screenshot{transform:none!important}
 }
+/* Square headshot: show the full image instead of reusing the old body-photo zoom. */
+.portrait-frame{height:auto;aspect-ratio:1}
+.portrait-frame img{padding:8px 8px 0}
