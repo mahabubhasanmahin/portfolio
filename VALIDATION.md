@@ -147,3 +147,10 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Clarified owner preference: restored the blue background and combined three distinct local coding/CSE photographs (code close-up, coding workstation, and code/server imagery). Sources are the owner's older public portfolio assets, optimized as WebP.
 - Applied soft masked layers, low opacity, and blue overlays with a clear reading area. Desktop shows three image layers; mobile keeps two. All layers are decorative and ignore pointer events.
 - Browser checks confirmed all three image files serve and the three photo layers render. Light/dark layout/portrait checks and effects suite passed, including mobile overflow and reduced-motion behavior. Desktop composition was visually inspected. Release: 20261108-r6.
+
+## Home screenshot cleanup
+
+- Based on the supplied screenshot, reduced code-image clutter behind the main copy while retaining the requested blue multi-image background. Added a stronger reading gradient and moved the network/workstation layers toward the outer/lower areas.
+- Removed badge rotation and negative outer offsets; constrained the portrait scene, badges, and availability caption so the Bangladesh label is no longer clipped at the hero edge.
+- New hero-layout suite passed badge bounds and document overflow checks at 320, 390, 768, 1024, 1440, and 1920px in English, Bengali, and Japanese (18 combinations). Home-refresh suite passed again. Desktop result was visually inspected.
+- The owner did not identify a specific screenshot region beyond asking for a fix; these changes address the visible background/text interference and cropped badge, preserving the requested colors, photos, and existing features. Release: 20261108-r7.

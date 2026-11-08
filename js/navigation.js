@@ -1,5 +1,5 @@
 /** A small, non-modal mobile menu with native button and link behavior. */
-import {translate} from './i18n.js?v=20261108-r6';
+import {translate} from './i18n.js?v=20261108-r7';
 export function initNavigation(){
  const toggle=document.querySelector('#menu-toggle'),nav=document.querySelector('#site-nav');
  const mobile=matchMedia('(max-width: 760px)');

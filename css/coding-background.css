@@ -19,3 +19,21 @@ html[data-theme=light] .contact-panel{background:radial-gradient(ellipse at bott
 html[data-theme=light] .skill-card,html[data-theme=light] .resume-card{background:#f2f8fddc}
 html[data-theme=light] .geometry{border-color:#3d6e9d25}
 @media(max-width:760px){.photo-code{width:95vw;height:35vh;right:-35vw;top:6vh;opacity:.14}.photo-workstation{width:90vw;height:38vh;right:-30vw;bottom:0;opacity:.12}.photo-network{display:none}.ambient-grid{display:none}html[data-theme=light] .sidebar{background:#cce1f0f7}html[data-theme=light] .hero{background:#c4dcea55}}
+
+/* Keep the collage out of the reading area and keep portrait badges in bounds. */
+.background-photo{opacity:.13}
+.photo-code{right:-12vw;top:-10vh;opacity:.17}
+.photo-workstation{right:-14vw;bottom:-18vh;opacity:.12}
+.photo-network{left:20vw;bottom:-27vh;opacity:.07}
+html[data-theme=light] .hero{background:linear-gradient(90deg,#c4dceaf2 0%,#c4dceae0 47%,#c4dcea55 78%,#c4dcea18 100%)}
+.hero-copy{position:relative;z-index:2;min-width:0}
+.portrait-scene{width:100%;max-width:420px;min-width:0;margin-inline:auto}
+.code-label{left:12px;top:4px;transform:none;max-width:calc(100% - 24px);line-height:1.7;white-space:normal}
+.location-label{right:12px;bottom:36px;transform:none;max-width:calc(100% - 24px);line-height:1.7}
+.scene-caption{left:0;right:0;bottom:0;text-align:center;line-height:1.7;padding:0 10px;white-space:normal}
+html[data-theme=dark] .hero{background:linear-gradient(90deg,#0a172aeb,#0a172abf 48%,#0a172a22)}
+@media(max-width:760px){
+ .photo-code{right:-42vw;top:8vh;opacity:.1}.photo-workstation{right:-38vw;bottom:-12vh;opacity:.08}
+ html[data-theme=light] .hero{background:#c4dceae3}html[data-theme=dark] .hero{background:#0a172ade}
+ .portrait-scene{max-width:350px}.code-label{left:8px;top:3px;font-size:10px}.location-label{right:8px;bottom:32px;font-size:10px}.scene-caption{font-size:10px;bottom:0}
+}
