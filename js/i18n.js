@@ -1,5 +1,6 @@
 // Each row is [English, বাংলা, 日本語]. Brand names and technology names stay unchanged.
 const rows = [
+["Living in","বর্তমানে থাকি","現在の居住地"],["Hometown","নিজ শহর","出身地"],["Rangpur, Bangladesh","রংপুর, বাংলাদেশ","ロングプール、バングラデシュ"],
  [
   "View image",
   "ছবি বড় করে দেখুন",
@@ -131,9 +132,9 @@ const rows = [
   "連絡する ↗"
  ],
  [
-  "Narayanganj, BD",
-  "নারায়ণগঞ্জ, বাংলাদেশ",
-  "ナラヤンガンジ、バングラデシュ"
+  "Dhaka, BD",
+  "ঢাকা, বাংলাদেশ",
+  "ダッカ、バングラデシュ"
  ],
  [
   "LEARNING AND BUILDING",
@@ -656,9 +657,9 @@ const rows = [
   "インターンシップ、初級職、共同プロジェクトについてご連絡ください。"
  ],
  [
-  "Narayanganj, Bangladesh",
-  "নারায়ণগঞ্জ, বাংলাদেশ",
-  "ナラヤンガンジ、バングラデシュ"
+  "Dhaka, Bangladesh",
+  "ঢাকা, বাংলাদেশ",
+  "ダッカ、バングラデシュ"
  ],
  [
   "Built with HTML, CSS, and JavaScript.",

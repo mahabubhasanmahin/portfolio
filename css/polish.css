@@ -42,3 +42,5 @@ main,.hero-copy,.about-grid>*,.practice-panel>*,.top-actions{min-width:0}
  .language-control select{min-height:44px}
 }
 @media(max-width:360px){.certificate-actions{flex-direction:column}.certificate-actions>*{flex:auto;width:100%}.topbar{padding-left:6%;padding-right:6%}}
+
+.contact-hometown{font-size:13px;color:var(--muted);margin-top:7px}

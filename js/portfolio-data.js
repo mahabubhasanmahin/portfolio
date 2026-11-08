@@ -1,5 +1,5 @@
 export const portfolio = {
- name: 'Md. Mahabub Hasan Mahin', shortName: 'Mahin', headline: 'CSE Student | C++ Problem Solver | Learning Software Development', location: 'Narayanganj, Bangladesh', email: 'mahabubhasanmahin231@gmail.com',
+ name: 'Md. Mahabub Hasan Mahin', shortName: 'Mahin', headline: 'CSE Student | C++ Problem Solver | Learning Software Development', location: 'Dhaka, Bangladesh', hometown: 'Rangpur, Bangladesh', email: 'mahabubhasanmahin231@gmail.com',
  intro: 'I study computer science and build small software projects. I enjoy solving problems with C++ and learning backend development.',
  about: 'I am a Computer Science and Engineering student at Green University of Bangladesh. I learn by building class and personal projects, practicing C++, and trying new tools. I am looking for an internship or a junior role where I can learn and help a team.',
  photo: 'assets/images/profile.jpg', resumes: [{name:'My CV',path:'assets/cv/resume.pdf'}],
