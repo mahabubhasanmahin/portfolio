@@ -63,3 +63,12 @@ Use a trusted installed Chromium executable. The smoke test currently asserts mi
 - Project-specific tests passed for all exact source/demo URLs, missing-demo absence, sidebar language control, screenshot decoding, and initial shared education anchor positioning.
 - Smoke, language, and effects suites passed after the project list and styling updates. Desktop project cards and mobile overview were visually inspected.
 - The portrait is still an initials placeholder. The inline chat photo was visually available but had no downloadable local asset/file ID; a real JPG/PNG attachment is needed to populate the configured portrait path.
+
+## Asset recovery and image preview update
+
+- Recovered five additional project screenshots through read-only Git access to CipherVault, Alert-Notification-System, E-Learning-Quiz-Platform-Java-MySQL-, Restaurant-Management-System-Assembly-, and Line-Coding-Error-Simulator. Kept the requested project identity and used genuine repository assets, optimized as WebP.
+- Added Python/Django certificate from the owner's public `www.mahabub.com` website repository and Cyber Hygiene certificate embedded in the uploaded HTML. No third-party credential verification was performed.
+- Eight project images and two certificate images are present. No substitute portrait was used; the brick-wall portrait, IGPC certificate, BFS, duplicate finder, and crop screenshots remain unavailable as downloadable files. The old Netlify asset endpoint and GitHub attachment/avatars endpoints returned policy 403 responses. A different old profile photo was inspected but intentionally not substituted.
+- Preview suite passed: eight screenshot controls, two certificate controls, project/certificate modal open, loaded images, initial focus, Escape dismissal, focus restoration, Bengali close label, mobile overflow, and no runtime errors.
+- Project suite passed with all eight screenshots decoding, source/demo URL matching, sidebar language selector, and initial education hash positioning.
+- Language and effects suites passed again. Initial runs failed because the old local HTTP server stopped responding; starting a new local server resolved the test prerequisite, and the affected checks passed.

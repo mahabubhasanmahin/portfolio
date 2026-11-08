@@ -1,5 +1,6 @@
 // Each row is [English, বাংলা, 日本語]. Brand names and technology names stay unchanged.
 const rows = [
+['View image','ছবি বড় করে দেখুন','画像を拡大'],['Close image preview','ছবির প্রিভিউ বন্ধ করুন','画像プレビューを閉じる'],['Image preview','ছবির প্রিভিউ','画像プレビュー'],
 ['DEVELOPER IN PROGRESS','শেখার পথে একজন ডেভেলপার','成長中の開発者'],
 ['Source code ↗','সোর্স কোড ↗','ソースコード ↗'],['Project screenshot','প্রজেক্টের স্ক্রিনশট','プロジェクトのスクリーンショット'],
 ['Explore the source code, or try a live demo where available.','সোর্স কোড দেখুন, অথবা যেখানে আছে সেখানে লাইভ ডেমো ব্যবহার করুন।','ソースコードを確認し、公開されているライブデモを試せます。'],

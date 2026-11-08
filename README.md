@@ -78,3 +78,11 @@ Pointer work uses a single scheduled animation frame only when the mouse moves. 
 ## Professional layout update
 
 `css/polish.css` contains the final sidebar, responsive language control, refined navy/indigo/cyan palette, project actions, and screenshot presentation. The selected list now matches all eleven projects in the supplied source. Four projects have supplied live URLs; all eleven have GitHub source links. Do not invent browser demos for local desktop/CLI projects. The authentic CV is downloadable directly from the hero button.
+
+## Screenshot and certificate previews
+
+Eight project screenshots are now stored locally. Five were recovered from the owner's GitHub project repositories; three came from the uploaded JavaScript's embedded image data. Images open in a native accessible dialog with Escape dismissal, focus containment/restoration, and localized controls (`js/preview.js`). Existing source code and live-demo actions remain separate from image previews.
+
+Two certificate images are centralized in `certificateImages` inside `js/portfolio-data.js`: Python/Django from the owner's older website repository, and Cyber Hygiene from the uploaded HTML. These are owner-published assets, not independently verified credentials. Add further authentic certificates to that array only after the image files exist.
+
+The specific brick-wall portrait, IGPC certificate, BFS screenshot, duplicate-finder screenshot, and crop screenshot supplied inline in chat could not be obtained as local files. No alternative portrait was substituted. Upload those files as JPG/PNG attachments or a ZIP, or commit the portrait at `assets/images/profile.jpg`. For the remaining project screenshots, store files in `assets/projects/` and set each project's `image` property. Certificate configuration lives in `certificateImages`. New screenshots automatically get the preview control.
