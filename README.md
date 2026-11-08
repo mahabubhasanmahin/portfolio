@@ -1,108 +1,91 @@
 # Mahin Portfolio
 
-A dependency-free, responsive portfolio built with semantic HTML, CSS, and ES modules. No build step, backend, database, API key, or frontend framework is required.
+Personal portfolio of **Md. Mahabub Hasan Mahin**, a CSE student at Green University of Bangladesh. I live in Dhaka, and my hometown is Rangpur, Bangladesh.
+
+**[View the website](https://mahabubhasanmahin.github.io/portfolio/)**
+
+Built with HTML, CSS, and JavaScript. No build step or backend is needed.
+
+## What is included
+
+- About me, skills, education, and contact links.
+- Eleven projects with GitHub links and four live demos.
+- Certificate cards with image previews and downloads.
+- CV download, dark/light themes, and English, Bengali, and Japanese.
+- Mobile-friendly layouts, keyboard support, and optional hover effects.
 
 ## Run locally
 
-From the existing checkout (cloud tasks are already isolated; no worktree is needed):
+Open this folder in VS Code. In the terminal, run:
 
 ```sh
-cd /workspace/portfolio
-python3 -m http.server 8000 --bind 0.0.0.0
+python3 -m http.server 8000
 ```
 
-For a local VS Code checkout, open the project directory and run `python3 -m http.server 8000` in its terminal, or use Live Server. Open the server in a browser. Opening index.html directly as a file will not load ES modules reliably.
+Open `http://localhost:8000` in your browser. Use the existing checkout in cloud tasks; no extra Git worktree is needed. VS Code Live Server also works. Do not open `index.html` directly, because the JavaScript modules need a local server.
 
-## Edit content and design
+## Edit the website
 
-- `js/portfolio-data.js`: personal details, introduction, about copy, links, projects, skill groups, education, training, asset paths, and effects options. Projects are rendered automatically; add/remove an object to change the collection. `demo` is a complete verified HTTPS live-demo URL; leave it `null` when unknown. `repo` is the complete GitHub URL copied from the owner-supplied source. Project cards show a source link and a live demo when one was supplied. Never invent demo links or statistics.
-- `css/style.css`: change `:root` design tokens for dark colors, light-theme overrides, typography, layouts, breakpoints, and animation styles.
-- `index.html`: layout and section ordering, headings, semantic structure, page title, description, and Open Graph metadata. When adding sections, add an ID and matching sidebar link.
-- `js/i18n.js`: English, Bengali, and Japanese translation rows. Add a row for new visible text; keep technology and project brand names unchanged. Language choice persists locally.
-- `js/main.js`: rendering, project filtering, theme persistence, active navigation, asset checks, reveal and tilt behavior.
-- Disable reveal/tilt or change `tiltDegrees` in `portfolio-data.js`. Both effects respect reduced-motion preferences; tilt runs only for mouse input.
+| What to change | File |
+| --- | --- |
+| Personal details, skills, projects, certificates, and image paths | `js/portfolio-data.js` |
+| Section order, page title, and search details | `index.html` |
+| English, Bengali, and Japanese text | `js/i18n.js` |
+| Main colors, text sizes, and layout | `css/style.css` |
+| Card design, sidebar, and mobile layout | `css/polish.css` |
+| Hover effects and background | `css/effects.css` and `js/effects.js` |
+| Certificate buttons | `js/certificates.js` |
+| Image previews | `js/preview.js` |
 
-### Authentic assets still needed
+To add a project or certificate, add an item to its list in `js/portfolio-data.js`. New cards appear automatically. Certificates use three columns on large screens, two on medium screens, and one on mobile. Add only real details and working links.
 
-The supplied `mahin_CV.pdf` is installed as `assets/cv/resume.pdf`. The uploaded source files were inspected as reference material, rather than executed or used to replace the existing application. A local profile photo and certificate image files still need to be added. The portrait uses an explicitly labeled initials placeholder, project artwork is decorative illustration, and the CV card exposes the authentic PDF download. No synthetic person or fake download is used.
+To turn off an effect, set its option to `false` in the `effects` object. Motion effects respect the visitor's reduced-motion setting.
 
-Place the authentic files at these paths (case-sensitive):
+## Upload images and CV
 
-- `assets/images/profile.jpg`
-- `assets/cv/resume.pdf`
+| File | Upload path |
+| --- | --- |
+| Profile photo | `assets/images/profile.jpg` |
+| IGPC certificate | `assets/certificates/igpc-2026.jpg` |
+| BFS screenshot | `assets/projects/bfs-crawler.png` |
+| Duplicate Finder screenshot | `assets/projects/duplicate-finder.png` |
+| Crop screenshot | `assets/projects/crop-recommendation.png` |
+| CV (already added; replace when needed) | `assets/cv/resume.pdf` |
 
-The site checks HTTP status and content type before exposing the portrait and downloads. Refresh after adding files. The portrait preserves the source appearance via object-fit; adjust object-position in CSS if necessary. Optimize the photo before committing. Certificate images should only be added if authentic.
+The five missing image paths are already set up. Upload the files and commit them to `main`; they will appear after deployment. Keep the exact spelling and file type. See [the upload guide](assets/UPLOAD-GUIDE.md) for details.
 
-For project screenshots, add optimized files in `assets/projects/` and set a project’s `image` path in `js/portfolio-data.js`. The renderer displays a lazy-loaded screenshot with alt text and falls back to artwork if loading fails. Three actual screenshots were extracted from the supplied JavaScript; other cards use decorative artwork.
+## Publish updates
 
-## Verification and content provenance
-
-Personal information and project descriptions come from the owner's brief. Public API and old portfolio requests were blocked by the environment's outbound network policy, so profile facts and project links were not independently verified. All eleven project source URLs were subsequently recovered from the supplied source and their repository roots were verified with read-only Git requests. No current solved-problem counts, ratings, or unverified metrics are shown. The site makes no runtime third-party requests and does not need GitHub integration.
-
-See `VALIDATION.md` for executed checks and remaining limitations. No fake contact form is included; email uses mailto. A mail client must be configured on the visitor's device.
-
-## Deploy to Vercel or Netlify
-
-This folder is the complete static site. No build command is needed; publish the repository root (`.`). On Vercel, import the GitHub repository, select **Other** as the framework, leave Build Command unset and set Output Directory to `.` if required. On Netlify, import the repository with no build command and publish directory `.`. Test a preview before promoting it. Set a real canonical URL and optional absolute Open Graph image URL after choosing the production domain.
-
-The repository is already initialized. For a separate new local folder only, run `git init` and add the intended remote. Review changes before committing:
+GitHub Pages uses **Settings → Pages → Deploy from a branch → main → / (root)**. Changes pushed to `main` are included in the next successful deployment.
 
 ```sh
 git status
-git add index.html css js assets README.md VALIDATION.md .gitignore
-git commit -m "Build editable developer portfolio"
-# Only when you intend to publish your changes:
+git add <files-you-changed>
+git commit -m "Update portfolio"
 git push origin HEAD:main
 ```
 
-Do not push or replace an existing production site without owner approval. Subsequent approved pushes trigger deployments when Git integration is enabled. To roll back, promote a previous known-good deployment in the provider dashboard, or create a revert commit and push it after review. Never rewrite shared Git history as a rollback shortcut.
+For Vercel or Netlify, use this folder as a static site, leave the build command empty, and use `.` as the output/publish folder. Update the canonical URL, social URL, and `sitemap.xml` if you change the site's address.
 
-Browser smoke checks are preserved in `tests/smoke.cjs`; see `VALIDATION.md` for the optional external test-tool installation and commands. These tools are not runtime dependencies.
+To undo a published change, revert its commit and push the revert. Avoid force-pushing shared history.
 
-## Readability and languages
+## Google search
 
-The sidebar language selector supports English, বাংলা, and 日本語, updates the document language, and remembers the choice. Technology and project names retain their original spelling. Body content is at least 15–16px with stronger secondary-text contrast. Review Bengali/Japanese translations before publication for your preferred wording. Four live URLs were recovered from the owner-supplied `main (1).js`: Cipher Vault, SSAN, AI Face Age Detection, and FoodieHub. They are owner-supplied destinations; availability of the hosted services is not independently verified. Other projects retain no demo URL.
+Add `https://mahabubhasanmahin.github.io/portfolio/` to [Google Search Console](https://search.google.com/search-console/). Complete ownership verification, submit `sitemap.xml`, and request indexing. Google decides when and where the site appears in search.
 
-## Mouse, button, and background effects
+## Checks
 
-`js/effects.js` manages pointer spotlight, project tilt, button ripple, and background parallax. `css/effects.css` controls their appearance. Change the `effects` object in `js/portfolio-data.js`:
+Browser checks cover mobile layouts, filters, language switching, certificate downloads, image previews, and reduced motion. See [VALIDATION.md](VALIDATION.md) for results and limits. Missing images and live-demo availability are listed there.
 
-- `spotlight`: mouse-following highlights on cards.
-- `tilt` and `tiltDegrees`: project-card perspective; the angle is capped at 8 degrees.
-- `buttons`: hover sheen and click ripple (keyboard activation is supported).
-- `background`: decorative gradient orbs, perspective grid, and floating outlines.
-- `reveal`: existing scroll transitions.
+Optional test tools are separate from the website:
 
-Pointer work uses a single scheduled animation frame only when the mouse moves. It resets on pointer exit, blur, visibility changes, or motion-preference changes. Touch devices disable tracking, narrow screens hide geometry, and reduced-motion mode hides the background and removes tilt/ripple. Native cursors, keyboard focus, and readable text remain intact. No animation library or 3D runtime is required.
+```sh
+npm install --prefix /tmp/portfolio-test-tools playwright
+NODE_PATH=/tmp/portfolio-test-tools/node_modules CHROMIUM_PATH=/usr/bin/chromium node tests/smoke.cjs
+```
 
-## Professional layout update
+Start the local server first. Use your installed Chromium path. Set `TEST_URL` if the server uses a different address or port. Other checks are in `tests/`.
 
-`css/polish.css` contains the final sidebar, responsive language control, refined navy/indigo/cyan palette, project actions, and screenshot presentation. The selected list now matches all eleven projects in the supplied source. Four projects have supplied live URLs; all eleven have GitHub source links. Do not invent browser demos for local desktop/CLI projects. The authentic CV is downloadable directly from the hero button.
+## Contact
 
-## Screenshot and certificate previews
-
-Eight project screenshots are now stored locally. Five were recovered from the owner's GitHub project repositories; three came from the uploaded JavaScript's embedded image data. Images open in a native accessible dialog with Escape dismissal, focus containment/restoration, and localized controls (`js/preview.js`). Existing source code and live-demo actions remain separate from image previews.
-
-Training details and optional certificate images share the `certifications` array inside `js/portfolio-data.js`. Each record has `date`, `title`, `issuer`, and `image` (a local file path or `null`). The two available images are: Python/Django from the owner's older website repository, and Cyber Hygiene from the uploaded HTML. These are owner-published assets, not independently verified credentials. Add further authentic certificates to that array only after the image files exist.
-
-The specific brick-wall portrait, IGPC certificate, BFS screenshot, duplicate-finder screenshot, and crop screenshot supplied inline in chat could not be obtained as local files. No alternative portrait was substituted. Upload those files as JPG/PNG attachments or a ZIP, or commit the portrait at `assets/images/profile.jpg`. For the remaining project screenshots, store files in `assets/projects/` and set each project's `image` property. Certificate configuration lives in `certifications`. New screenshots automatically get the preview control.
-
-## Simple English and certificate actions
-
-The English copy uses short sentences and common words. Official course titles and technology names stay unchanged. Keep translation rows in `js/i18n.js` in sync when editing visible copy.
-
-`js/certificates.js` renders one card per training record. Available images have explicit **View certificate** and **Download certificate** actions. Missing images show a short status without dead links. Add the IGPC certificate path to its existing record when the authentic file is uploaded. Do not add invented certificate IDs or verification links.
-
-`js/preview.js` handles preview loading, readable error messages, downloads, Escape dismissal, and focus restoration. Use `tests/certificates.cjs` to check real image download, localized controls, failure handling, and small-screen layout.
-
-Education and Certificates are independent sections in `index.html`. Responsive certificate layout is controlled by the final rules in `css/polish.css`: one column on small screens, two on medium screens, and three on large screens. Run `tests/responsive.cjs` with the same optional Playwright setup to verify section order, width, overflow, and touch targets.
-
-### Add another certificate
-
-Add an object to `certifications` in `js/portfolio-data.js` with `date`, `title`, `issuer`, and `image` (a path under `assets/certificates/`, or `null` until supplied). Commit both the image and the data change. The project-style grid creates new rows automatically: three cards per row on large screens, two on medium screens, one on mobile. Nine certificates fill three large-screen rows; a tenth starts the next row. There is no nine-card limit, and no empty/fake certificate cards are added to fill rows.
-
-## Search and missing-image uploads
-
-See `assets/UPLOAD-GUIDE.md` for the five exact missing-image upload paths. The `uploadImage` values are optional future image paths; the browser checks them before using them, so uploading the matching file activates it without another code change.
-
-The canonical production address is `https://mahabubhasanmahin.github.io/portfolio/`. The page includes the full name in its title and initial HTML, profile structured data, social metadata, and `sitemap.xml`. After publishing, add this URL-prefix property in Google Search Console, complete Google's ownership verification, submit `https://mahabubhasanmahin.github.io/portfolio/sitemap.xml`, and request indexing for the home page. No verification code is included because Google must issue it to the site owner. Indexing and ranking are Google's decisions and are not guaranteed. This is a project site; a robots.txt inside `/portfolio/` cannot control the entire github.io host.
+[Email](mailto:mahabubhasanmahin231@gmail.com) · [GitHub](https://github.com/mahabubhasanmahin) · [LinkedIn](https://linkedin.com/in/md-mahabub-hasan-mahin-54908229a)
