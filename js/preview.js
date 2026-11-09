@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-cv2';
+import {translate} from './i18n.js?v=20261109-locales';
 /** Native dialog supplies focus containment, Escape, and focus restoration. */
 export function initImagePreview(){
  const dialog=document.createElement('dialog');dialog.className='image-dialog';dialog.setAttribute('aria-labelledby','preview-title');

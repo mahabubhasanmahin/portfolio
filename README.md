@@ -8,6 +8,8 @@ Kanchan, Narayanganj, Bangladesh · Hometown: Rangpur · Seeking an internship.
 
 HTML, CSS, and JavaScript. No build step required.
 
+Choose English, বাংলা, or 日本語 to change the website text. Brand/technology names and code keep their standard spelling. Uploaded PDFs and text inside screenshots are original documents, not automatic translations.
+
 ## Edit files
 
 | Update | File |

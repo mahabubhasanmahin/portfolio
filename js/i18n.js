@@ -323,7 +323,7 @@ const rows = [
  [
   "AI / ML",
   "এআই / এমএল",
-  "AI / ML"
+  "人工知能・機械学習"
  ],
  [
   "Systems",
@@ -693,7 +693,7 @@ const rows = [
  [
   "Md. Mahabub Hasan Mahin",
   "মোঃ মাহাবুব হাসান মাহিন",
-  "Md. Mahabub Hasan Mahin"
+  "エムディー・マハブブ・ハサン・マヒン"
  ],
  [
   "projects shown",
@@ -1019,20 +1019,132 @@ const rows = [
   "Food browsing, user sign-in, and cart features.",
   "খাবার দেখা, ব্যবহারকারীর সাইন-ইন ও কার্টের সুবিধা।",
   "料理の閲覧、ユーザーのログイン、カート機能。"
+ ],
+ [
+  "Language",
+  "ভাষা",
+  "言語"
+ ],
+ [
+  "Alert & Notification System",
+  "অ্যালার্ট ও নোটিফিকেশন সিস্টেম",
+  "アラート・通知システム"
+ ],
+ [
+  "Duplicate File Finder & System Cleaner",
+  "একই ফাইল খোঁজা ও সিস্টেম পরিষ্কারের টুল",
+  "重複ファイル検出・システム整理ツール"
+ ],
+ [
+  "Smart Safety Awareness Network",
+  "স্মার্ট সেফটি অ্যাওয়ারনেস নেটওয়ার্ক",
+  "安全情報共有ネットワーク"
+ ],
+ [
+  "AI Face Age Detection",
+  "কৃত্রিম বুদ্ধিমত্তায় মুখের বয়স অনুমান",
+  "AIによる顔の年齢推定"
+ ],
+ [
+  "E-Learning Quiz Platform",
+  "অনলাইন শিক্ষার কুইজ প্ল্যাটফর্ম",
+  "学習用クイズプラットフォーム"
+ ],
+ [
+  "Restaurant Management System",
+  "রেস্তোরাঁ ব্যবস্থাপনা সিস্টেম",
+  "レストラン管理システム"
+ ],
+ [
+  "BFS Web Crawler",
+  "BFS দিয়ে ওয়েব পেজ খোঁজার টুল",
+  "BFSウェブクローラー"
+ ],
+ [
+  "Smart Crop Recommendation System",
+  "উপযুক্ত ফসল পরামর্শের সিস্টেম",
+  "適切な作物の推薦システム"
+ ],
+ [
+  "Line Coding Error Simulator",
+  "লাইন কোডিংয়ের ত্রুটি অনুকরণ",
+  "ライン符号化の誤りシミュレーター"
+ ],
+ [
+  "Sockets",
+  "সকেট",
+  "ソケット"
+ ],
+ [
+  "Multithreading",
+  "একাধিক থ্রেডে কাজ",
+  "マルチスレッド"
+ ],
+ [
+  "Algorithms",
+  "অ্যালগরিদম",
+  "アルゴリズム"
+ ],
+ [
+  "Machine Learning",
+  "মেশিন লার্নিং",
+  "機械学習"
+ ],
+ [
+  "Digital Communication",
+  "ডিজিটাল যোগাযোগ",
+  "デジタル通信"
+ ],
+ [
+  "Signal Simulation",
+  "সিগন্যাল অনুকরণ",
+  "信号シミュレーション"
+ ],
+ [
+  "Java Socket Programming",
+  "Java সকেট প্রোগ্রামিং",
+  "Javaソケットプログラミング"
+ ],
+ [
+  "Portrait of Md. Mahabub Hasan Mahin",
+  "মোঃ মাহাবুব হাসান মাহিনের ছবি",
+  "エムディー・マハブブ・ハサン・マヒンの写真"
+ ],
+ [
+  "Md. Mahabub Hasan Mahin | CSE Student & Developer Portfolio",
+  "মোঃ মাহাবুব হাসান মাহিন | সিএসই শিক্ষার্থী ও ডেভেলপার পোর্টফোলিও",
+  "エムディー・マハブブ・ハサン・マヒン | 情報工学の学生・開発ポートフォリオ"
+ ],
+ [
+  "Md. Mahabub Hasan",
+  "মোঃ মাহাবুব হাসান",
+  "エムディー・マハブブ・ハサン"
+ ],
+ [
+  "Mahin",
+  "মাহিন",
+  "マヒン"
  ]
 ];
 const dictionary=new Map(rows.map(([en,bn,ja])=>[en,{en,bn,ja}]));
 const originals=new WeakMap();const originalAttrs=new WeakMap();
 let language='en';
-export function translate(text){if(typeof text!=='string')return text;return dictionary.get(text)?.[language]||text.split(' — ').map(part=>dictionary.get(part)?.[language]||part).join(' — ');}
+export function translate(text){
+ if(typeof text!=='string')return text;
+ const direct=dictionary.get(text)?.[language];if(direct)return direct;
+ const count=text.match(/^(\d+) projects shown$/);
+ if(count){const number=new Intl.NumberFormat(language==='bn'?'bn-BD':language==='ja'?'ja-JP':'en-US').format(Number(count[1]));return language==='bn'?number+'টি প্রজেক্ট দেখানো হচ্ছে':language==='ja'?number+'件のプロジェクトを表示':number+' projects shown';}
+ return text.split(' — ').map(part=>dictionary.get(part)?.[language]||part).join(' — ');
+}
 export function translatePage(root=document.body){
  const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:node=>node.parentElement.closest('script,style,code,pre,select')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
  const nodes=[];while(walker.nextNode())nodes.push(walker.currentNode);
- for(const node of nodes){if(!originals.has(node))originals.set(node,node.textContent);const source=originals.get(node);const value=source.trim();if(dictionary.has(value))node.textContent=source.replace(value,translate(value));}
+ for(const node of nodes){if(!originals.has(node))originals.set(node,node.textContent);const source=originals.get(node);const value=source.trim();const translated=translate(value);if(translated!==value||node.textContent!==source)node.textContent=source.replace(value,translated);}
  root.querySelectorAll('[aria-label],[title],[alt]').forEach(node=>{if(!originalAttrs.has(node))originalAttrs.set(node,{});const saved=originalAttrs.get(node);for(const attr of ['aria-label','title','alt']){if(!node.hasAttribute(attr)||node.hasAttribute('data-i18n-dynamic')||(node.id==='theme-toggle'&&attr==='aria-label'))continue;const explicit=node.getAttribute('data-i18n-'+attr);if(explicit){node.setAttribute(attr,translate(explicit));continue;}if(!saved[attr])saved[attr]=node.getAttribute(attr);node.setAttribute(attr,translate(saved[attr]));}});
 }
 export function initLanguage(){
- const select=document.querySelector('#language-select');try{const stored=localStorage.getItem('mahin-language');if(['en','bn','ja'].includes(stored))language=stored;}catch{}
- function apply(){document.documentElement.lang=language;select.value=language;translatePage();document.dispatchEvent(new CustomEvent('languagechange'));}
+ const select=document.querySelector('#language-select');const pageTitle=document.title;
+ const optionLabels={en:['English','বাংলা','日本語'],bn:['ইংরেজি','বাংলা','জাপানি'],ja:['英語','ベンガル語','日本語']};try{const stored=localStorage.getItem('mahin-language');if(['en','bn','ja'].includes(stored))language=stored;}catch{}
+ function apply(){document.documentElement.lang=language;document.title=translate(pageTitle);select.value=language;[...select.options].forEach((option,index)=>{option.textContent=optionLabels[language][index];});translatePage();document.dispatchEvent(new CustomEvent('languagechange'));}
  select.addEventListener('change',()=>{language=select.value;try{localStorage.setItem('mahin-language',language);}catch{}apply();});apply();
 }

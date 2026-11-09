@@ -1,11 +1,11 @@
-import {initCVPreview} from './cv.js?v=20261109-cv2';
-import {initProfile} from './profile.js?v=20261109-cv2';
-import {initNavigation} from './navigation.js?v=20261109-cv2';
-import {renderCertificates} from './certificates.js?v=20261109-cv2';
-import {initImagePreview} from './preview.js?v=20261109-cv2';
-import {initEffects} from './effects.js?v=20261109-cv2';
-import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-cv2';
-import {portfolio as data} from './portfolio-data.js?v=20261109-cv2';
+import {initCVPreview} from './cv.js?v=20261109-locales';
+import {initProfile} from './profile.js?v=20261109-locales';
+import {initNavigation} from './navigation.js?v=20261109-locales';
+import {renderCertificates} from './certificates.js?v=20261109-locales';
+import {initImagePreview} from './preview.js?v=20261109-locales';
+import {initEffects} from './effects.js?v=20261109-locales';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-locales';
+import {portfolio as data} from './portfolio-data.js?v=20261109-locales';
 initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -36,7 +36,7 @@ function renderProjects(category='All projects') {
   if(project.repo&&/^https:\/\/github\.com\//.test(project.repo)){const repo=external('GitHub ↗',project.repo);repo.className='project-link source-link';actions.append(repo);}
   body.append(actions);card.append(art,body);$('#project-grid').append(card);
  }
- $('#project-status').textContent=projects.length+' '+translate('projects shown');translatePage($('#project-grid'));
+ $('#project-status').textContent=translate(projects.length+' projects shown');translatePage($('#project-grid'));
 }
 for(const c of ['All projects',...new Set(data.projects.map(p=>p.category))]){const b=element('button','',c);b.type='button';b.setAttribute('aria-pressed',String(c==='All projects'));b.addEventListener('click',()=>{$('#filters').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderProjects(c);});$('#filters').append(b);}renderProjects();
 // Known local files link directly; network preflight checks must not block controls.
@@ -58,4 +58,4 @@ initEffects(data.effects);
 
 initLanguage();
 setTheme(document.documentElement.dataset.theme);
-document.addEventListener("languagechange",()=>{setTheme(document.documentElement.dataset.theme);const count=$("#project-grid").querySelectorAll(".project-card").length;$("#project-status").textContent=count+" "+translate("projects shown");});
+document.addEventListener("languagechange",()=>{setTheme(document.documentElement.dataset.theme);const count=$("#project-grid").querySelectorAll(".project-card").length;$("#project-status").textContent=translate(count+" projects shown");});

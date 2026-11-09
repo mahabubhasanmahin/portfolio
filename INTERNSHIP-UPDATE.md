@@ -66,3 +66,7 @@ Its extracted text states final semester, 2023–Present, foundational technical
 2. Exact individual contributions can be added later when provided; the current feature-based wording avoids inventing them.
 
 The owner authorized publishing these reviewed fixes in the follow-up request. GitHub Pages must complete its deployment after the push.
+
+## Language follow-up
+
+Completed Bengali/Japanese coverage for descriptive project names, generic skill terms, hero name, browser title, language controls, screenshot labels, and localized project counts. Fixed composite text translation and verified English restoration, filters, dialogs, and unchanged URLs. Added `tests/full-localization.cjs`. Brand/technology names and code retain their standard spelling; uploaded PDFs and screenshot contents are not translated. The cache release is now `20261109-locales`.

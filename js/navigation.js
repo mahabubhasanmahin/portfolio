@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-cv2';
+import {translate} from './i18n.js?v=20261109-locales';
 
 /** One active-section controller for pointer, keyboard, scroll, and history. */
 export function initNavigation(){
