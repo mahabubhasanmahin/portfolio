@@ -1,10 +1,87 @@
-const {chromium}=require('playwright');
-(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',headless:true,args:['--no-sandbox']});const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto((process.env.TEST_URL || 'http://127.0.0.1:8000'));await page.waitForSelector('.resume-card');const assert=(x,s)=>{if(!x)throw Error(s);console.log('PASS '+s)};
-if(await page.locator('html').getAttribute('data-theme')==='light')await page.getByRole('button',{name:'Switch to dark theme'}).click();
-assert(await page.locator('.project-card').count()===11,'all eleven supplied projects render');for(const [filter,n]of [['Backend',1],['Web',2],['AI / ML',2],['Systems',6],['All projects',11]]){await page.getByRole('button',{name:filter,exact:true}).click();assert(await page.locator('.project-card').count()===n,'filter '+filter);}
-for(const width of [1440,768,390,320]){await page.setViewportSize({width,height:950});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no horizontal overflow '+width);}
-await page.getByRole('button',{name:'Switch to light theme'}).click();assert(await page.locator('html').getAttribute('data-theme')==='light','theme switches');await page.reload();await page.waitForSelector('.resume-card');assert(await page.locator('html').getAttribute('data-theme')==='light','theme persists');await page.getByRole('button',{name:'Switch to dark theme'}).click();
-assert(await page.locator('.resume-card a[download]').count()===1,'authentic CV download available');const pdf=await page.request.get(new URL('assets/cv/mahin_cv.pdf',page.url()).href);assert(pdf.ok()&&(await pdf.body()).subarray(0,5).toString()==='%PDF-','download serves a real PDF');await page.locator('#profile').evaluate(e=>e.decode());assert(await page.locator('#profile').isVisible(),'uploaded profile photo renders');
-assert(await page.evaluate(()=>[...document.querySelectorAll('a[href^="#"]')].every(a=>document.querySelector(a.getAttribute('href')))),'every internal navigation target exists');
-await page.emulateMedia({reducedMotion:'reduce'});assert(await page.locator('.portrait-frame').evaluate(e=>getComputedStyle(e).animationName)==='none','reduced motion disables animations');
-await page.goto((process.env.TEST_URL || 'http://127.0.0.1:8000'));await page.keyboard.press('Tab');assert(await page.locator('.skip').evaluate(e=>e===document.activeElement),'keyboard skip link is first focus');await page.keyboard.press('Enter');assert(await page.evaluate(()=>document.activeElement.id==='main'),'skip link moves focus to main');assert(errors.length===0,'no JavaScript runtime errors');await browser.close();})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
+    headless: true,
+    args: ['--no-sandbox'],
+  });
+  const page = await browser.newPage();
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(process.env.TEST_URL || 'http://127.0.0.1:8000');
+  await page.waitForSelector('.resume-card');
+  const assert = (x, s) => {
+    if (!x) throw Error(s);
+    console.log('PASS ' + s);
+  };
+  if ((await page.locator('html').getAttribute('data-theme')) === 'light')
+    await page.getByRole('button', { name: 'Switch to dark theme' }).click();
+  assert(
+    (await page.locator('.project-card').count()) === 11,
+    'all eleven supplied projects render',
+  );
+  for (const [filter, n] of [
+    ['Backend', 1],
+    ['Web', 2],
+    ['AI / ML', 2],
+    ['Systems', 6],
+    ['All projects', 11],
+  ]) {
+    await page.getByRole('button', { name: filter, exact: true }).click();
+    assert((await page.locator('.project-card').count()) === n, 'filter ' + filter);
+  }
+  for (const width of [1440, 768, 390, 320]) {
+    await page.setViewportSize({ width, height: 950 });
+    assert(
+      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      'no horizontal overflow ' + width,
+    );
+  }
+  await page.getByRole('button', { name: 'Switch to light theme' }).click();
+  assert((await page.locator('html').getAttribute('data-theme')) === 'light', 'theme switches');
+  await page.reload();
+  await page.waitForSelector('.resume-card');
+  assert((await page.locator('html').getAttribute('data-theme')) === 'light', 'theme persists');
+  await page.getByRole('button', { name: 'Switch to dark theme' }).click();
+  assert(
+    (await page.locator('.resume-card a[download]').count()) === 1,
+    'authentic CV download available',
+  );
+  const pdf = await page.request.get(new URL('assets/cv/mahin_cv.pdf', page.url()).href);
+  assert(
+    pdf.ok() && (await pdf.body()).subarray(0, 5).toString() === '%PDF-',
+    'download serves a real PDF',
+  );
+  await page.locator('#profile').evaluate((e) => e.decode());
+  assert(await page.locator('#profile').isVisible(), 'uploaded profile photo renders');
+  assert(
+    await page.evaluate(() =>
+      [...document.querySelectorAll('a[href^="#"]')].every((a) =>
+        document.querySelector(a.getAttribute('href')),
+      ),
+    ),
+    'every internal navigation target exists',
+  );
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  assert(
+    (await page.locator('.portrait-frame').evaluate((e) => getComputedStyle(e).animationName)) ===
+      'none',
+    'reduced motion disables animations',
+  );
+  await page.goto(process.env.TEST_URL || 'http://127.0.0.1:8000');
+  await page.keyboard.press('Tab');
+  assert(
+    await page.locator('.skip').evaluate((e) => e === document.activeElement),
+    'keyboard skip link is first focus',
+  );
+  await page.keyboard.press('Enter');
+  assert(
+    await page.evaluate(() => document.activeElement.id === 'main'),
+    'skip link moves focus to main',
+  );
+  assert(errors.length === 0, 'no JavaScript runtime errors');
+  await browser.close();
+})().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

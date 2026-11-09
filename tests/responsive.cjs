@@ -1,6 +1,101 @@
-const {chromium}=require('playwright');
-(async()=>{const b=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});const p=await b.newPage();await p.goto(process.env.TEST_URL||'http://127.0.0.1:8000');await p.waitForSelector('.certificate-card');const ok=(v,s)=>{if(!v)throw Error(s);console.log('PASS '+s)};
-ok(await p.evaluate(()=>{const education=document.querySelector('#education'),certificates=document.querySelector('#certifications');return education.parentElement.tagName==='MAIN'&&education.nextElementSibling===certificates;}),'certificates are a separate section immediately after education');
-for(const width of [320,360,390,600,768,1024,1440,1920]){await p.setViewportSize({width,height:900});await p.locator('#certifications').scrollIntoViewIfNeeded();ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'no overflow '+width);ok(await p.locator('#certifications').evaluate(e=>Math.abs(e.getBoundingClientRect().width-document.querySelector('#education').getBoundingClientRect().width)<1),'full width sections '+width);ok(await p.locator('.certificate-actions').first().evaluate(e=>[...e.children].every(button=>{const a=button.getBoundingClientRect(),r=e.getBoundingClientRect();return a.left>=r.left-1&&a.right<=r.right+1&&a.height>=44;})),'certificate actions fit and have touch targets '+width);}
-await p.setViewportSize({width:320,height:900});for(const language of ['bn','ja']){await p.selectOption('#language-select',language);ok(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'localized mobile layout '+language);}await p.setViewportSize({width:1440,height:1000});await p.evaluate(async()=>{const {renderCertificates}=await import(new URL('js/certificates.js',document.baseURI).href);renderCertificates(Array.from({length:10},(_,i)=>({date:'Test',title:'Test certificate '+(i+1),issuer:'Test fixture',image:null})),document.querySelector('#certification-list'));});
-ok(await p.locator('.certificate-card').count()===10,'new certificates render without a nine-card limit');ok(await p.locator('.certificate-list').evaluate(e=>{const r=[...e.children].map(x=>x.getBoundingClientRect());return r[0].top===r[1].top&&r[1].top===r[2].top&&r[3].top>r[0].top&&r[6].top>r[3].top&&r[9].top>r[6].top;}),'three columns create three rows and a new fourth row');await b.close();})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require('playwright');
+(async () => {
+  const b = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
+    args: ['--no-sandbox'],
+  });
+  const p = await b.newPage();
+  await p.goto(process.env.TEST_URL || 'http://127.0.0.1:8000');
+  await p.waitForSelector('.certificate-card');
+  const ok = (v, s) => {
+    if (!v) throw Error(s);
+    console.log('PASS ' + s);
+  };
+  ok(
+    await p.evaluate(() => {
+      const education = document.querySelector('#education'),
+        certificates = document.querySelector('#certifications');
+      return (
+        education.parentElement.tagName === 'MAIN' && education.nextElementSibling === certificates
+      );
+    }),
+    'certificates are a separate section immediately after education',
+  );
+  for (const width of [320, 360, 390, 600, 768, 1024, 1440, 1920]) {
+    await p.setViewportSize({ width, height: 900 });
+    await p.locator('#certifications').scrollIntoViewIfNeeded();
+    ok(
+      await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      'no overflow ' + width,
+    );
+    ok(
+      await p
+        .locator('#certifications')
+        .evaluate(
+          (e) =>
+            Math.abs(
+              e.getBoundingClientRect().width -
+                document.querySelector('#education').getBoundingClientRect().width,
+            ) < 1,
+        ),
+      'full width sections ' + width,
+    );
+    ok(
+      await p
+        .locator('.certificate-actions')
+        .first()
+        .evaluate((e) =>
+          [...e.children].every((button) => {
+            const a = button.getBoundingClientRect(),
+              r = e.getBoundingClientRect();
+            return a.left >= r.left - 1 && a.right <= r.right + 1 && a.height >= 44;
+          }),
+        ),
+      'certificate actions fit and have touch targets ' + width,
+    );
+  }
+  await p.setViewportSize({ width: 320, height: 900 });
+  for (const language of ['bn', 'ja']) {
+    await p.selectOption('#language-select', language);
+    ok(
+      await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      'localized mobile layout ' + language,
+    );
+  }
+  await p.setViewportSize({ width: 1440, height: 1000 });
+  await p.evaluate(async () => {
+    const { renderCertificates } = await import(
+      new URL('js/certificates.js', document.baseURI).href
+    );
+    renderCertificates(
+      Array.from({ length: 10 }, (_, i) => ({
+        date: 'Test',
+        title: 'Test certificate ' + (i + 1),
+        issuer: 'Test fixture',
+        image: null,
+      })),
+      document.querySelector('#certification-list'),
+    );
+  });
+  ok(
+    (await p.locator('.certificate-card').count()) === 10,
+    'new certificates render without a nine-card limit',
+  );
+  ok(
+    await p.locator('.certificate-list').evaluate((e) => {
+      const r = [...e.children].map((x) => x.getBoundingClientRect());
+      return (
+        r[0].top === r[1].top &&
+        r[1].top === r[2].top &&
+        r[3].top > r[0].top &&
+        r[6].top > r[3].top &&
+        r[9].top > r[6].top
+      );
+    }),
+    'three columns create three rows and a new fourth row',
+  );
+  await b.close();
+})().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

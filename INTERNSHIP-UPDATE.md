@@ -44,21 +44,21 @@ Its extracted text states final semester, 2023–Present, foundational technical
 
 ## Modified files
 
-| File | Change |
-| --- | --- |
-| `js/portfolio-data.js` | Identity/location, internship copy, skill labels, project order, education, FoodieHub scope |
-| `js/i18n.js` | English/Bengali/Japanese additions for all new text |
-| `index.html` | Initial hero copy, interests, header/contact, metadata and structured location; asset cache version |
-| `js/main.js` | Neutral project-detail labels and module cache versions |
-| `js/cv.js`, `js/navigation.js`, `js/preview.js` | Import cache version only; behavior retained |
-| `scripts/make-social-card.cjs` | Correct location and learner/final-semester text |
-| `assets/images/social-card.png` | Regenerated existing social graphic with the corrected text |
-| `README.md`, `assets/UPLOAD-GUIDE.md`, `VALIDATION.md`, `AUDIT.md` | Short commands, current CV upload instructions, and review links |
-| `tests/home-refresh.cjs`, `tests/smoke.cjs`, `tests/audit.cjs` | Current CV path, exact download filename, and neutral project detail labels |
-| `tests/languages.cjs` | Assert new Bengali copy and locate Backend by translated name |
-| `tests/search-and-uploads.cjs` | Target Cipher Vault by name for the simulated screenshot failure |
-| `tests/internship-content.cjs` | New integration coverage for current owner-supplied content and priority order |
-| `INTERNSHIP-UPDATE.md` | This review report and outstanding confirmations |
+| File                                                               | Change                                                                                              |
+| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
+| `js/portfolio-data.js`                                             | Identity/location, internship copy, skill labels, project order, education, FoodieHub scope         |
+| `js/i18n.js`                                                       | English/Bengali/Japanese additions for all new text                                                 |
+| `index.html`                                                       | Initial hero copy, interests, header/contact, metadata and structured location; asset cache version |
+| `js/main.js`                                                       | Neutral project-detail labels and module cache versions                                             |
+| `js/cv.js`, `js/navigation.js`, `js/preview.js`                    | Import cache version only; behavior retained                                                        |
+| `scripts/make-social-card.cjs`                                     | Correct location and learner/final-semester text                                                    |
+| `assets/images/social-card.png`                                    | Regenerated existing social graphic with the corrected text                                         |
+| `README.md`, `assets/UPLOAD-GUIDE.md`, `VALIDATION.md`, `AUDIT.md` | Short commands, current CV upload instructions, and review links                                    |
+| `tests/home-refresh.cjs`, `tests/smoke.cjs`, `tests/audit.cjs`     | Current CV path, exact download filename, and neutral project detail labels                         |
+| `tests/languages.cjs`                                              | Assert new Bengali copy and locate Backend by translated name                                       |
+| `tests/search-and-uploads.cjs`                                     | Target Cipher Vault by name for the simulated screenshot failure                                    |
+| `tests/internship-content.cjs`                                     | New integration coverage for current owner-supplied content and priority order                      |
+| `INTERNSHIP-UPDATE.md`                                             | This review report and outstanding confirmations                                                    |
 
 ## Needs owner input
 
@@ -70,3 +70,9 @@ The owner authorized publishing these reviewed fixes in the follow-up request. G
 ## Language follow-up
 
 Completed Bengali/Japanese coverage for descriptive project names, generic skill terms, hero name, browser title, language controls, screenshot labels, and localized project counts. Fixed composite text translation and verified English restoration, filters, dialogs, and unchanged URLs. Added `tests/full-localization.cjs`. Brand/technology names and code retain their standard spelling; uploaded PDFs and screenshot contents are not translated. The cache release is now `20261109-locales`.
+
+## Source formatting follow-up
+
+Formatted HTML, CSS, JavaScript, tests, helper scripts, and Markdown for editing. Added short English/Bangla comments around page sections and feature logic, a CODE-GUIDE.md section/file map, Prettier configuration, EditorConfig, and VS Code format-on-save settings. Python/XML/SVG were also laid out readably. Uploaded images and PDFs were left intact.
+
+Compared the complete portfolio data and normalized rendered text, titles, links, and image paths before/after formatting in all three languages: unchanged. Translation matching now tolerates line breaks in formatted HTML; the initial-heading source check also accepts indentation. The release-stamp helper works with the formatted imports and markup. Formatting, JavaScript/Python syntax, browser regression, and automated accessibility checks were run before publishing.

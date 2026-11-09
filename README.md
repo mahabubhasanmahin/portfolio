@@ -10,17 +10,19 @@ HTML, CSS, and JavaScript. No build step required.
 
 Choose English, বাংলা, or 日本語 to change the website text. Brand/technology names and code keep their standard spelling. Uploaded PDFs and text inside screenshots are original documents, not automatic translations.
 
+[Code guide / কোড বোঝার গাইড](CODE-GUIDE.md) — section comments, file roles, and VS Code formatting.
+
 ## Edit files
 
-| Update | File |
-| --- | --- |
-| Personal details, projects, skills, education, certificates | `js/portfolio-data.js` |
-| Page structure and SEO | `index.html` |
-| English, Bengali, Japanese text | `js/i18n.js` |
-| Colors and layout | `css/style.css` |
-| Animations | `css/effects.css`, `js/effects.js` |
-| Profile photo | `assets/images/profile.png` |
-| CV preview and download | `assets/cv/mahin_cv.pdf` |
+| Update                                                      | File                               |
+| ----------------------------------------------------------- | ---------------------------------- |
+| Personal details, projects, skills, education, certificates | `js/portfolio-data.js`             |
+| Page structure and SEO                                      | `index.html`                       |
+| English, Bengali, Japanese text                             | `js/i18n.js`                       |
+| Colors and layout                                           | `css/style.css`                    |
+| Animations                                                  | `css/effects.css`, `js/effects.js` |
+| Profile photo                                               | `assets/images/profile.png`        |
+| CV preview and download                                     | `assets/cv/mahin_cv.pdf`           |
 
 Replace the CV with a real PDF using the same filename. Both download buttons save it as **mahin_cv.pdf**. Add projects or certificates to their lists in the data file; cards appear automatically. Keep skill levels and project notes accurate.
 
@@ -33,6 +35,13 @@ python3 -m http.server 8000
 ```
 
 Open `http://localhost:8000`. VS Code Live Server also works.
+
+Format source files or check their formatting:
+
+```sh
+npx --yes prettier@3.8.1 --write .
+npx --yes prettier@3.8.1 --check .
+```
 
 Prepare matching cache versions before an approved release:
 

@@ -1,4 +1,56 @@
-const {chromium}=require('playwright');
-(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:1440,height:1000}});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(process.env.TEST_URL||'http://127.0.0.1:8000');await page.waitForSelector('.certificate-preview');const ok=(x,label)=>{if(!x)throw Error(label);console.log('PASS '+label)};ok(await page.locator('.image-preview').count()===11,'all eleven uploaded project screenshots');ok(await page.locator('.certificate-preview').count()===3,'all three uploaded certificates');
-for(const trigger of [page.locator('.image-preview').first(),page.locator('.certificate-preview').first()]){await trigger.scrollIntoViewIfNeeded();await trigger.click();await page.locator('.image-dialog img').evaluate(e=>e.decode());ok(await page.locator('.image-dialog').isVisible(),'preview opens');ok(await page.locator('.preview-close').evaluate(e=>e===document.activeElement),'dialog close receives focus');await page.keyboard.press('Escape');ok(!await page.locator('.image-dialog').isVisible(),'Escape closes preview');ok(await trigger.evaluate(e=>e===document.activeElement),'preview restores focus');}
-await page.selectOption('#language-select','bn');await page.locator('.image-preview').first().click();ok(await page.getByRole('button',{name:'ছবির প্রিভিউ বন্ধ করুন'}).isVisible(),'localized preview controls');await page.getByRole('button',{name:'ছবির প্রিভিউ বন্ধ করুন'}).click();await page.setViewportSize({width:390,height:850});await page.locator('.certificate-preview').last().click();ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'mobile dialog no overflow');await page.keyboard.press('Escape');ok(errors.length===0,'no preview runtime errors');await browser.close();})().catch(e=>{console.error(e);process.exit(1)});
+const { chromium } = require('playwright');
+(async () => {
+  const browser = await chromium.launch({
+    executablePath: process.env.CHROMIUM_PATH || '/usr/bin/chromium',
+    args: ['--no-sandbox'],
+  });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = [];
+  page.on('pageerror', (e) => errors.push(e.message));
+  await page.goto(process.env.TEST_URL || 'http://127.0.0.1:8000');
+  await page.waitForSelector('.certificate-preview');
+  const ok = (x, label) => {
+    if (!x) throw Error(label);
+    console.log('PASS ' + label);
+  };
+  ok(
+    (await page.locator('.image-preview').count()) === 11,
+    'all eleven uploaded project screenshots',
+  );
+  ok((await page.locator('.certificate-preview').count()) === 3, 'all three uploaded certificates');
+  for (const trigger of [
+    page.locator('.image-preview').first(),
+    page.locator('.certificate-preview').first(),
+  ]) {
+    await trigger.scrollIntoViewIfNeeded();
+    await trigger.click();
+    await page.locator('.image-dialog img').evaluate((e) => e.decode());
+    ok(await page.locator('.image-dialog').isVisible(), 'preview opens');
+    ok(
+      await page.locator('.preview-close').evaluate((e) => e === document.activeElement),
+      'dialog close receives focus',
+    );
+    await page.keyboard.press('Escape');
+    ok(!(await page.locator('.image-dialog').isVisible()), 'Escape closes preview');
+    ok(await trigger.evaluate((e) => e === document.activeElement), 'preview restores focus');
+  }
+  await page.selectOption('#language-select', 'bn');
+  await page.locator('.image-preview').first().click();
+  ok(
+    await page.getByRole('button', { name: 'ছবির প্রিভিউ বন্ধ করুন' }).isVisible(),
+    'localized preview controls',
+  );
+  await page.getByRole('button', { name: 'ছবির প্রিভিউ বন্ধ করুন' }).click();
+  await page.setViewportSize({ width: 390, height: 850 });
+  await page.locator('.certificate-preview').last().click();
+  ok(
+    await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+    'mobile dialog no overflow',
+  );
+  await page.keyboard.press('Escape');
+  ok(errors.length === 0, 'no preview runtime errors');
+  await browser.close();
+})().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

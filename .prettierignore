@@ -1,0 +1,5 @@
+# Uploaded documents, screenshots, and images are not source formatting targets.
+assets/
+node_modules/
+.git/
+generated_images/
