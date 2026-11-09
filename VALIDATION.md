@@ -1,6 +1,6 @@
 # Validation
 
-The current Midnight Glass release audit, actual fixes, test coverage, and limitations are recorded in [AUDIT.md](AUDIT.md).
+The current content/CV update is recorded in [INTERNSHIP-UPDATE.md](INTERNSHIP-UPDATE.md). Earlier design checks are in [AUDIT.md](AUDIT.md).
 
 Historical validation notes remain available in Git history. Use the current audit rather than older light-theme/photo-path instructions.
 

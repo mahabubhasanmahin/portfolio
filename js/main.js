@@ -1,11 +1,11 @@
-import {initCVPreview} from './cv.js?v=20261109-emerald-grid';
-import {initProfile} from './profile.js?v=20261109-emerald-grid';
-import {initNavigation} from './navigation.js?v=20261109-emerald-grid';
-import {renderCertificates} from './certificates.js?v=20261109-emerald-grid';
-import {initImagePreview} from './preview.js?v=20261109-emerald-grid';
-import {initEffects} from './effects.js?v=20261109-emerald-grid';
-import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-emerald-grid';
-import {portfolio as data} from './portfolio-data.js?v=20261109-emerald-grid';
+import {initCVPreview} from './cv.js?v=20261109-cv2';
+import {initProfile} from './profile.js?v=20261109-cv2';
+import {initNavigation} from './navigation.js?v=20261109-cv2';
+import {renderCertificates} from './certificates.js?v=20261109-cv2';
+import {initImagePreview} from './preview.js?v=20261109-cv2';
+import {initEffects} from './effects.js?v=20261109-cv2';
+import {initLanguage,translate,translatePage} from './i18n.js?v=20261109-cv2';
+import {portfolio as data} from './portfolio-data.js?v=20261109-cv2';
 initProfile(data.photo);
 const $ = selector => document.querySelector(selector);
 const element = (tag, className, text) => {const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;};
@@ -29,7 +29,7 @@ function renderProjects(category='All projects') {
    const preview=element('button','image-preview');preview.type='button';preview.dataset.previewSrc=project.image;preview.dataset.previewTitle=project.name;preview.setAttribute('aria-label','View image — '+project.name);preview.append(image,element('span','image-preview-hint','View image'));image.addEventListener('error',()=>{preview.remove();art.setAttribute('aria-hidden','true');art.append(element('span','project-symbol',project.icon));},{once:true});art.append(preview);
   }else{art.setAttribute('aria-hidden','true');art.append(element('span','project-symbol',project.icon),element('span','art-caption','PROJECT EXPLORATION'));}
   const body=element('div','project-body');body.append(element('span','project-category',project.category),element('h3','',project.name),element('p','',project.description));
-  const details=element('details','project-details');details.append(element('summary','','Project details'));const list=element('dl');for(const [label,value] of [['What it does',project.description],['My work',project.work],['What I learned',project.learning]]){if(!value)continue;list.append(element('dt','',label),element('dd','',value));}details.append(list);body.append(details);
+  const details=element('details','project-details');details.append(element('summary','','Project details'));const list=element('dl');for(const [label,value] of [['What it does',project.description],['Project features',project.work],['Practice topics',project.learning]]){if(!value)continue;list.append(element('dt','',label),element('dd','',value));}details.append(list);body.append(details);
   const tags=element('div','tags');project.stack.forEach(skill=>tags.append(element('span','',skill)));body.append(tags);
   const actions=element('div','project-actions');
   if(project.demo&&/^https:\/\//.test(project.demo)){const demo=external('Live demo ↗',project.demo);demo.className='project-link demo-link';actions.append(demo);}
@@ -42,7 +42,7 @@ for(const c of ['All projects',...new Set(data.projects.map(p=>p.category))]){co
 // Known local files link directly; network preflight checks must not block controls.
 for(const cv of data.resumes){
  const card=element('article','resume-card');const copy=element('div');copy.append(element('h3','',cv.name),element('p','','PDF document'));card.append(copy);
- if(cv.path){const link=element('a','','Download ↓');link.href=cv.path;link.download='';card.append(link);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions .secondary');heroCV.href=cv.path;heroCV.download='';}}
+ if(cv.path){const link=element('a','','Download ↓');link.href=cv.path;link.download=cv.downloadName||cv.path.split('/').pop();card.append(link);if(cv===data.resumes[0]){const heroCV=document.querySelector('.hero-actions .secondary');heroCV.href=cv.path;heroCV.download=link.download;}}
  else card.append(element('span','asset-status','PDF not supplied'));
  if(cv.path){const actions=element('div','resume-actions');const download=card.querySelector('a[download]');const preview=element('button','cv-preview','View CV');preview.type='button';preview.dataset.cvSrc=cv.path;preview.setAttribute('aria-haspopup','dialog');actions.append(preview,download);card.append(actions);}
  $('#resume-list').append(card);

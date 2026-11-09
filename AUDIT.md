@@ -70,6 +70,6 @@ Compared the complete data object with a pre-change snapshot. Only the hero intr
 
 ## Editing and deployment
 
-[README.md](README.md) maps photos, projects, skills, CV, colors, translations, and animations to their editable files. [assets/UPLOAD-GUIDE.md](assets/UPLOAD-GUIDE.md) lists active upload paths. CV filename: **resume.pdf**, stored under **assets/cv/**.
+[README.md](README.md) maps photos, projects, skills, CV, colors, translations, and animations to their editable files. [assets/UPLOAD-GUIDE.md](assets/UPLOAD-GUIDE.md) lists active upload paths. Current CV filename: **mahin_cv.pdf**, stored under **assets/cv/**. The owner replaced the earlier resume.pdf after the original audit.
 
 GitHub Pages: **Settings → Pages → Deploy from a branch → main → / (root)**. Run the release-stamp script, commit, and push to main; wait for the Pages workflow. Keep relative assets and fragment section links. No build command or SPA rewrite is needed.

@@ -1,4 +1,4 @@
-import {translate} from './i18n.js?v=20261109-emerald-grid';
+import {translate} from './i18n.js?v=20261109-cv2';
 
 /** A real PDF preview with a normal open/download fallback for mobile browsers. */
 export function initCVPreview(){

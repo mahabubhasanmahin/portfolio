@@ -146,11 +146,6 @@ const rows = [
   "連絡する ↗"
  ],
  [
-  "Dhaka, BD",
-  "ঢাকা, বাংলাদেশ",
-  "ダッカ、バングラデシュ"
- ],
- [
   "LEARNING AND BUILDING",
   "শিখছি ও তৈরি করছি",
   "学んで作る"
@@ -159,16 +154,6 @@ const rows = [
   "Hi, I’m",
   "হ্যালো, আমি",
   "こんにちは。私は"
- ],
- [
-  "CSE Student | C++ Problem Solver | Learning Software Development",
-  "সিএসই শিক্ষার্থী | C++ সমস্যা সমাধানকারী | সফটওয়্যার ডেভেলপমেন্ট শিখছি",
-  "情報工学の学生 | C++で問題解決 | ソフトウェア開発を学習中"
- ],
- [
-  "I study computer science and build small software projects. I enjoy solving problems with C++ and learning backend development.",
-  "আমি কম্পিউটার বিজ্ঞান পড়ছি এবং ছোট সফটওয়্যার প্রজেক্ট তৈরি করি। C++ দিয়ে সমস্যা সমাধান করতে ও ব্যাকএন্ড ডেভেলপমেন্ট শিখতে ভালো লাগে।",
-  "情報工学を学び、小さなソフトウェアを作っています。C++で問題を解き、バックエンド開発を学ぶことが好きです。"
  ],
  [
   "View projects",
@@ -274,11 +259,6 @@ const rows = [
   "ABOUT ME",
   "আমার সম্পর্কে",
   "自己紹介"
- ],
- [
-  "I am a Computer Science and Engineering student at Green University of Bangladesh. I learn by building class and personal projects, practicing C++, and trying new tools. I am looking for an internship or a junior role where I can learn and help a team.",
-  "আমি গ্রিন ইউনিভার্সিটি অব বাংলাদেশের কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিংয়ের শিক্ষার্থী। ক্লাসের ও নিজের প্রজেক্ট তৈরি, C++ চর্চা এবং নতুন টুল ব্যবহার করে শিখি। এমন ইন্টার্নশিপ বা জুনিয়র কাজ খুঁজছি, যেখানে শিখতে ও দলকে সাহায্য করতে পারব।",
-  "グリーン大学バングラデシュで情報工学を学んでいます。授業や個人のプロジェクト、C++の練習、新しいツールを使うことで学んでいます。学びながらチームに役立てるインターンシップや初級職を探しています。"
  ],
  [
   "MY INTERESTS",
@@ -546,11 +526,6 @@ const rows = [
   "研修と修了証"
  ],
  [
-  "2023 — Expected 2027",
-  "২০২৩ — সম্ভাব্য ২০২৭",
-  "2023年 — 2027年卒業予定"
- ],
- [
   "B.Sc. in Computer Science and Engineering",
   "কম্পিউটার সায়েন্স অ্যান্ড ইঞ্জিনিয়ারিংয়ে বিএসসি",
   "コンピュータサイエンス・工学 学士課程"
@@ -669,11 +644,6 @@ const rows = [
   "Contact me about internships, junior roles, or working on a project together.",
   "ইন্টার্নশিপ, জুনিয়র কাজ বা একসঙ্গে প্রজেক্ট করতে যোগাযোগ করুন।",
   "インターンシップ、初級職、共同プロジェクトについてご連絡ください。"
- ],
- [
-  "Dhaka, Bangladesh",
-  "ঢাকা, বাংলাদেশ",
-  "ダッカ、バングラデシュ"
  ],
  [
   "Built with HTML, CSS, and JavaScript.",
@@ -956,9 +926,99 @@ const rows = [
   "インターンをお探しですか？ご連絡ください ↗"
  ],
  [
-  "I study computer science, practice problem solving with C++, and learn backend development through projects. I am looking for a software development internship where I can learn and help a team.",
-  "আমি কম্পিউটার বিজ্ঞান পড়ছি, C++ দিয়ে সমস্যা সমাধান চর্চা করি এবং প্রজেক্টের মাধ্যমে ব্যাকএন্ড ডেভেলপমেন্ট শিখি। এমন সফটওয়্যার ডেভেলপমেন্ট ইন্টার্নশিপ খুঁজছি, যেখানে শিখতে ও দলকে সাহায্য করতে পারব।",
-  "情報工学を学び、C++で問題解決を練習し、プロジェクトを通してバックエンド開発を学んでいます。学びながらチームに貢献できるソフトウェア開発のインターンシップを探しています。"
+  "CSE Student | C++ Problem-Solving Learner",
+  "সিএসই শিক্ষার্থী | C++ দিয়ে সমস্যা সমাধান শিখছি",
+  "情報工学の学生 | C++で問題解決を学習中"
+ ],
+ [
+  "I am a final-semester CSE student at Green University of Bangladesh. I practice problem solving with C++ and am seeking internships in Software Development, IT Support, Technical Operations, or Technical Talent Acquisition.",
+  "আমি গ্রিন ইউনিভার্সিটি অব বাংলাদেশের শেষ সেমিস্টারের সিএসই শিক্ষার্থী। C++ দিয়ে সমস্যা সমাধান চর্চা করি এবং সফটওয়্যার ডেভেলপমেন্ট, আইটি সাপোর্ট, টেকনিক্যাল অপারেশনস অথবা টেকনিক্যাল ট্যালেন্ট অ্যাকুইজিশনে ইন্টার্নশিপ খুঁজছি।",
+  "グリーン大学バングラデシュで情報工学を学ぶ最終学期の学生です。C++で問題解決を練習し、ソフトウェア開発、ITサポート、技術運用、技術人材採用のインターンシップを探しています。"
+ ],
+ [
+  "I learn through class and personal projects, C++ practice, and selected DSA topics. My knowledge of other programming languages, databases, frameworks, Linux, and networking is foundational or project-based. I am interested in Software Development, IT Support, Technical Operations, and Technical Talent Acquisition internships, where I can learn and support a team.",
+  "ক্লাস ও ব্যক্তিগত প্রজেক্ট, C++ চর্চা এবং DSA-এর নির্বাচিত বিষয় শেখার মাধ্যমে এগিয়ে যাচ্ছি। অন্যান্য প্রোগ্রামিং ভাষা, ডেটাবেস, ফ্রেমওয়ার্ক, Linux ও নেটওয়ার্কিংয়ে আমার পরিচিতি প্রাথমিক বা প্রজেক্টভিত্তিক। সফটওয়্যার ডেভেলপমেন্ট, আইটি সাপোর্ট, টেকনিক্যাল অপারেশনস এবং টেকনিক্যাল ট্যালেন্ট অ্যাকুইজিশন ইন্টার্নশিপে আগ্রহী, যেখানে শিখতে ও দলকে সহায়তা করতে পারব।",
+  "授業や個人のプロジェクト、C++の練習、DSAの一部の分野を通して学んでいます。他のプログラミング言語、データベース、フレームワーク、Linux、ネットワークの知識は基礎的、またはプロジェクトを通して得たものです。学びながらチームを支えられるソフトウェア開発、ITサポート、技術運用、技術人材採用のインターンシップに関心があります。"
+ ],
+ [
+  "Kanchan, Narayanganj, Bangladesh",
+  "কাঞ্চন, নারায়ণগঞ্জ, বাংলাদেশ",
+  "カンチャン、ナラヤンガンジ、バングラデシュ"
+ ],
+ [
+  "Kanchan, Narayanganj",
+  "কাঞ্চন, নারায়ণগঞ্জ",
+  "カンチャン、ナラヤンガンジ"
+ ],
+ [
+  "2023–Present | Final Semester | Seeking Internship",
+  "২০২৩–বর্তমান | শেষ সেমিস্টার | ইন্টার্নশিপ খুঁজছি",
+  "2023年–現在 | 最終学期 | インターンシップを希望"
+ ],
+ [
+  "Main practice",
+  "মূল চর্চা",
+  "主に練習している分野"
+ ],
+ [
+  "Ongoing problem-solving practice",
+  "নিয়মিত সমস্যা সমাধানের চর্চা",
+  "継続的な問題解決の練習"
+ ],
+ [
+  "Selected DSA topics",
+  "DSA-এর নির্বাচিত বিষয়",
+  "DSAの一部の分野"
+ ],
+ [
+  "Tools & systems · foundational familiarity",
+  "টুল ও সিস্টেম · প্রাথমিক পরিচিতি",
+  "ツールとシステム · 基礎的な知識"
+ ],
+ [
+  "Software Development",
+  "সফটওয়্যার ডেভেলপমেন্ট",
+  "ソフトウェア開発"
+ ],
+ [
+  "IT Support",
+  "আইটি সাপোর্ট",
+  "ITサポート"
+ ],
+ [
+  "Technical Operations",
+  "টেকনিক্যাল অপারেশনস",
+  "技術運用"
+ ],
+ [
+  "Technical Talent Acquisition",
+  "টেকনিক্যাল ট্যালেন্ট অ্যাকুইজিশন",
+  "技術人材採用"
+ ],
+ [
+  "Seeking an internship",
+  "ইন্টার্নশিপ খুঁজছি",
+  "インターンシップを探しています"
+ ],
+ [
+  "Contact me about Software Development, IT Support, Technical Operations, or Technical Talent Acquisition internships.",
+  "সফটওয়্যার ডেভেলপমেন্ট, আইটি সাপোর্ট, টেকনিক্যাল অপারেশনস অথবা টেকনিক্যাল ট্যালেন্ট অ্যাকুইজিশন ইন্টার্নশিপের বিষয়ে যোগাযোগ করুন।",
+  "ソフトウェア開発、ITサポート、技術運用、技術人材採用のインターンシップについてご連絡ください。"
+ ],
+ [
+  "Project features",
+  "প্রজেক্টের বৈশিষ্ট্য",
+  "プロジェクトの機能"
+ ],
+ [
+  "Practice topics",
+  "চর্চার বিষয়",
+  "練習のテーマ"
+ ],
+ [
+  "Food browsing, user sign-in, and cart features.",
+  "খাবার দেখা, ব্যবহারকারীর সাইন-ইন ও কার্টের সুবিধা।",
+  "料理の閲覧、ユーザーのログイン、カート機能。"
  ]
 ];
 const dictionary=new Map(rows.map(([en,bn,ja])=>[en,{en,bn,ja}]));
